@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VITH Education - LMS Portal & Interactive Learning</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="nav-container">
+            <div class="brand">
+                <div class="logo-icon">
+                    <span class="code-tag">&lt;V&gt;</span>
+                </div>
+                <div class="brand-text">
+                    <span class="brand-name">VITH <span class="brand-accent">Education</span></span>
+                    <span class="brand-tagline">Web Development LMS</span>
+                </div>
+            </div>
+
+            <div class="header-progress-card">
+                <div class="progress-info-row">
+                    <div class="progress-label">
+                        <i class="fa-solid fa-chart-line accent-icon"></i>
+                        <span>Overall Progress:</span>
+                    </div>
+                    <div class="progress-metrics">
+                        <strong id="completedCountText">0/6</strong> Modul (<span id="percentageText">0%</span>)
+                    </div>
+                </div>
+                <div class="progress-track">
+                    <div class="progress-fill" id="overallProgressFill" style="width: 0%;"></div>
+                </div>
+            </div>
+
+            <div class="user-menu">
+                <!-- <button id="resetProgressBtn" class="btn-reset" title="Reset Ulang Progress Belajar">
+                    <i class="fa-solid fa-rotate-right"></i> Reset Progress
+                </button> -->
+                <div class="avatar-badge">
+                    <i class="fa-solid fa-user-code">A</i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+
+    <main class="main-container">
+
+        <section class="hero-section">
+            <div class="hero-content">
+                <div class="badge-pill">
+                    <i class="fa-solid fa-rocket"></i> Path Pemrograman Web Frontend
+                </div>
+                <h1>Kuasai HTML &amp; CSS dengan Pembelajaran Interaktif</h1>
+                <p>Platform e-learning berbasis hands-on project. Pelajari fondasi web, tata letak modern Flexbox &amp; Grid, hingga membangun website portofolio profesional.</p>
+                
+                <div class="quick-stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-icon"><i class="fa-solid fa-cubes"></i></div>
+                        <div class="stat-detail">
+                            <span class="stat-value" id="totalModulesCount">0</span>
+                            <span class="stat-label">Total Modul</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon success"><i class="fa-solid fa-circle-check"></i></div>
+                        <div class="stat-detail">
+                            <span class="stat-value" id="completedModulesCount"></span>
+                            <span class="stat-label">Modul Selesai</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon warning"><i class="fa-solid fa-spinner"></i></div>
+                        <div class="stat-detail">
+                            <span class="stat-value" id="inProgressModulesCount"></span>
+                            <span class="stat-label">Sedang Dipelajari</span>
+                        </div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-icon info"><i class="fa-solid fa-clock"></i></div>
+                        <div class="stat-detail">
+                            <span class="stat-value">~7.5 Jam</span>
+                            <span class="stat-label">Estimasi Waktu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="hero-decoration">
+                <div class="code-snippet-window">
+                    <div class="window-header">
+                        <span class="dot red"></span>
+                        <span class="dot yellow"></span>
+                        <span class="dot green"></span>
+                        <span class="window-title">vith-learning-stack.html</span>
+                    </div>
+                    <pre class="code-preview"><code><span class="c-tag">&lt;div</span> <span class="c-attr">class</span>=<span class="c-str">"vith-developer"</span><span class="c-tag">&gt;</span>
+  <span class="c-tag">&lt;h2&gt;</span>Hello, Future Dev!👋<span class="c-tag">&lt;/h2&gt;</span>
+  <span class="c-tag">&lt;p&gt;</span>HTML5 &amp; CSS3 Interactive Path<span class="c-tag">&lt;/p&gt;</span>
+  <span class="c-tag">&lt;ul&gt;</span>
+    <span class="c-tag">&lt;li&gt;</span>✓ Semantic HTML<span class="c-tag">&lt;/li&gt;</span>
+    <span class="c-tag">&lt;li&gt;</span>✓ Flexbox &amp; Grid Layout<span class="c-tag">&lt;/li&gt;</span>
+    <span class="c-tag">&lt;li&gt;</span>✓ Real Portfolio Project<span class="c-tag">&lt;/li&gt;</span>
+  <span class="c-tag">&lt;/ul&gt;</span>
+<span class="c-tag">&lt;/div&gt;</span></code></pre>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-container roadmap-section">
+            <div class="section-header">
+                <h2><i class="fa-solid fa-map-location-dot accent-text"></i> Roadmap Belajar Terstruktur</h2>
+                <p>Ikuti tahapan pembelajaran berurutan dari dasar hingga siap membuat proyek mandiri.</p>
+            </div>
+            
+            <div class="roadmap-timeline">
+                <div class="roadmap-step" id="step-1">
+                    <div class="step-badge">01</div>
+                    <div class="step-content">
+                        <h4>Fondasi HTML5</h4>
+                        <p>Sintaks dasar, struktur dokumen, tag semantik &amp; formulir.</p>
+                    </div>
+                </div>
+                <div class="roadmap-connector"></div>
+                <div class="roadmap-step" id="step-2">
+                    <div class="step-badge">02</div>
+                    <div class="step-content">
+                        <h4>Styling &amp; Box Model</h4>
+                        <p>Selektor CSS, pewarnaan, tipografi &amp; manipulasi ruang.</p>
+                    </div>
+                </div>
+                <div class="roadmap-connector"></div>
+                <div class="roadmap-step" id="step-3">
+                    <div class="step-badge">03</div>
+                    <div class="step-content">
+                        <h4>Layout Modern</h4>
+                        <p>Tata letak responsive dengan Flexbox &amp; CSS Grid System.</p>
+                    </div>
+                </div>
+                <div class="roadmap-connector"></div>
+                <div class="roadmap-step" id="step-4">
+                    <div class="step-badge">04</div>
+                    <div class="step-content">
+                        <h4>Projek Portofolio</h4>
+                        <p>Membangun situs web lengkap &amp; siap dipublikasikan.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-container">
+            <div class="filter-toolbar">
+                <div class="search-box">
+                    <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                    <input type="text" id="searchInput" placeholder="Cari judul modul atau kata kunci (misal: Flexbox, Form)..." autocomplete="off">
+                    <button id="clearSearchBtn" class="clear-btn" style="display: none;"><i class="fa-solid fa-xmark"></i></button>
+                </div>
+
+                <div class="filter-group">
+                    <span class="filter-label"><i class="fa-solid fa-filter"></i> Kategori:</span>
+                    <div class="filter-tags" id="categoryFilterContainer">
+                        <button class="filter-tag active" data-category="all">Semua</button>
+                        <button class="filter-tag" data-category="HTML Dasar">HTML Dasar</button>
+                        <button class="filter-tag" data-category="CSS Styling">CSS Styling</button>
+                        <button class="filter-tag" data-category="CSS Layout">CSS Layout</button>
+                        <button class="filter-tag" data-category="Projek Interaktif">Projek Interaktif</button>
+                    </div>
+                </div>
+
+                <div class="status-filter-group">
+                    <span class="filter-label"><i class="fa-solid fa-bars-staggered"></i> Status:</span>
+                    <select id="statusSelectFilter" class="status-dropdown">
+                        <option value="all">Semua Status</option>
+                        <option value="completed">✓ Selesai</option>
+                        <option value="in_progress">⏳ Sedang Dipelajari</option>
+                        <option value="not_started">🔒 Belum Dibuka / Belum Mulai</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="section-container">
+            <div class="section-header-inline">
+                <h3>Daftar Modul Pembelajaran</h3>
+                <span class="module-counter" id="visibleModulesCount">Menampilkan 6 modul</span>
+            </div>
+
+            <div class="modules-grid" id="modulesGrid">
+                </div>
+
+            <div id="emptyState" class="empty-state" style="display: none;">
+                <i class="fa-solid fa-folder-open empty-icon"></i>
+                <h3>Modul tidak ditemukan</h3>
+                <p>Coba gunakan kata kunci lain atau ubah filter kategori/status yang aktif.</p>
+                <button id="resetFilterBtn" class="btn-secondary"><i class="fa-solid fa-arrow-rotate-left"></i> Reset Filter</button>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-text">&lt;/&gt; VITH Education</span>
+                <p>Interactive Front-End Web Learning Platform for Future Developers.</p>
+            </div>
+            <div class="footer-info">
+                <p>&copy; 2026 VITH Education. System State saved automatically via <code>localStorage</code>.</p>
+            </div>
+        </div>
+    </footer>
+
+    <div id="toast" class="toast-notification">
+        <i class="fa-solid fa-circle-check toast-icon"></i>
+        <span id="toastMessage">Status modul diperbarui!</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
