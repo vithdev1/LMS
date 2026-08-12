@@ -169,7 +169,7 @@ const MODULES_DATA = [
                 return matchCategory && matchStatus && matchSearch;
             });
 
-            visibleModulesCount.innerText = `Menampilkan ${filteredModules.length} dari ${total} modul`;
+            visibleModulesCount.innerText = `Menampilkan ${filteredModules.length} dari ${totalModul} modul`;
             modulesGrid.innerHTML = "";
 
             if (filteredModules.length === 0) {
