@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="VITH Education — Platform Belajar Web Development Interaktif untuk Developer Masa Depan" />
+  <meta name="theme-color" content="#18181c" />
+  <title>VITH Education — Dashboard Belajar</title>
+
+  <!-- Preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Inline SVG icon helper (no external icon dep) -->
+  <style>
+    /* Inline icon SVG as inline-SVG class helpers */
+    .icon { display:inline-block; vertical-align:middle; }
+  </style>
+</head>
+
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     SKIP TO MAIN (Accessibility)
+═══════════════════════════════════════════════ -->
+<a href="#main-content" class="sr-only" style="position:absolute;top:var(--space-4);left:var(--space-4);z-index:9999;background:var(--accent-primary);color:#fff;padding:var(--space-2) var(--space-4);border-radius:var(--radius-md);font-weight:600;" tabindex="0">Loncat ke Konten Utama</a>
+
+<!-- ═══════════════════════════════════════════════
+     HEADER
+═══════════════════════════════════════════════ -->
+<header class="site-header" role="banner">
+  <div class="container">
+    <div class="header-inner">
+
+      <!-- Brand Logo -->
+      <a href="/" class="site-logo" aria-label="VITH Education — Kembali ke halaman utama">
+        <div class="logo-badge" aria-hidden="true">
+          <span class="logo-angle">&lt;</span>
+          <span class="logo-slash">/</span>
+          <span class="logo-angle">&gt;</span>
+          <span class="logo-name">VITH</span>
+        </div>
+        <span class="logo-label">Education</span>
+      </a>
+
+      <!-- Progress Widget -->
+      <div class="header-progress-widget" role="status" aria-live="polite" aria-label="Progress belajar keseluruhan">
+        <div class="progress-meta">
+          <span class="progress-label">Overall Progress</span>
+          <span class="progress-stat" id="progress-stat">0 / 12 Modul</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" id="progress-track">
+          <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+        </div>
+      </div>
+
+      <!-- Header Right Actions -->
+      <div class="header-actions">
+        <!-- Time Counter -->
+        <div class="time-counter" aria-label="Estimasi sisa waktu belajar" title="Estimasi sisa waktu belajar">
+          <svg class="time-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span class="time-label">Sisa:</span>
+          <span class="time-value" id="time-remaining">0j 0m</span>
+        </div>
+
+        <!-- Reset Button -->
+        <button class="btn-reset" id="btn-reset" aria-label="Reset seluruh progress belajar" title="Reset Progress">
+          <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="1 4 1 10 7 10"/><path d="M3.51 15a9 9 0 1 0 .49-3.85"/>
+          </svg>
+          <span>Reset</span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════════
+     MAIN
+═══════════════════════════════════════════════ -->
+<main id="main-content" class="site-main">
+  <div class="container">
+
+    <!-- ── STATS BAR ──────────────────────────────── -->
+    <section class="stats-bar" aria-label="Ringkasan statistik belajar">
+      <div class="stat-card" role="group" aria-labelledby="stat-completed-label">
+        <div class="stat-icon-wrapper teal" aria-hidden="true">✓</div>
+        <div class="stat-info">
+          <div class="stat-value" id="stat-completed">0</div>
+          <div class="stat-label" id="stat-completed-label">Modul Selesai</div>
+        </div>
+      </div>
+      <div class="stat-card" role="group" aria-labelledby="stat-inprogress-label">
+        <div class="stat-icon-wrapper blue" aria-hidden="true">▶</div>
+        <div class="stat-info">
+          <div class="stat-value" id="stat-inprogress">0</div>
+          <div class="stat-label" id="stat-inprogress-label">Sedang Dipelajari</div>
+        </div>
+      </div>
+      <div class="stat-card" role="group" aria-labelledby="stat-bookmarks-label">
+        <div class="stat-icon-wrapper yellow" aria-hidden="true">★</div>
+        <div class="stat-info">
+          <div class="stat-value" id="stat-bookmarks">0</div>
+          <div class="stat-label" id="stat-bookmarks-label">Favorit / Bookmark</div>
+        </div>
+      </div>
+      <div class="stat-card" role="group" aria-labelledby="stat-total-label">
+        <div class="stat-icon-wrapper purple" aria-hidden="true">⊞</div>
+        <div class="stat-info">
+          <div class="stat-value" id="stat-total">12</div>
+          <div class="stat-label" id="stat-total-label">Total Modul</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── ROADMAP SECTION ────────────────────────── -->
+    <section class="roadmap-section" aria-labelledby="roadmap-title">
+      <div class="roadmap-header">
+        <p class="section-eyebrow" aria-hidden="true">Jalur Belajar</p>
+        <h2 class="section-title" id="roadmap-title">Roadmap Belajar Web Development</h2>
+        <p class="section-desc">Ikuti jalur belajar terstruktur dari fondasi HTML hingga proyek portofolio nyata.</p>
+      </div>
+
+      <div class="roadmap-timeline" role="list" aria-label="Tahapan roadmap belajar">
+
+        <div class="roadmap-stage" role="listitem" id="stage-1" aria-label="Tahap 1: Fondasi HTML">
+          <div class="roadmap-dot-wrapper">
+            <div class="roadmap-dot" aria-hidden="true">01</div>
+          </div>
+          <div class="roadmap-stage-label">Fondasi HTML</div>
+          <div class="roadmap-stage-desc">Struktur, Semantik & Aksesibilitas</div>
+          <div class="roadmap-progress-bar" role="progressbar" aria-label="Progress Tahap 1" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="roadmap-progress-fill" id="stage-1-fill" style="width:0%"></div>
+          </div>
+          <div class="roadmap-stage-count">
+            <span class="count-done" id="stage-1-done">0</span><span>/3 Modul</span>
+          </div>
+        </div>
+
+        <div class="roadmap-stage" role="listitem" id="stage-2" aria-label="Tahap 2: CSS Styling">
+          <div class="roadmap-dot-wrapper">
+            <div class="roadmap-dot" aria-hidden="true">02</div>
+          </div>
+          <div class="roadmap-stage-label">CSS Styling</div>
+          <div class="roadmap-stage-desc">Warna, Tipografi & Selectors</div>
+          <div class="roadmap-progress-bar" role="progressbar" aria-label="Progress Tahap 2" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="roadmap-progress-fill" id="stage-2-fill" style="width:0%"></div>
+          </div>
+          <div class="roadmap-stage-count">
+            <span class="count-done" id="stage-2-done">0</span><span>/3 Modul</span>
+          </div>
+        </div>
+
+        <div class="roadmap-stage" role="listitem" id="stage-3" aria-label="Tahap 3: CSS Layout">
+          <div class="roadmap-dot-wrapper">
+            <div class="roadmap-dot" aria-hidden="true">03</div>
+          </div>
+          <div class="roadmap-stage-label">CSS Layout</div>
+          <div class="roadmap-stage-desc">Flexbox, Grid & Responsive</div>
+          <div class="roadmap-progress-bar" role="progressbar" aria-label="Progress Tahap 3" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="roadmap-progress-fill" id="stage-3-fill" style="width:0%"></div>
+          </div>
+          <div class="roadmap-stage-count">
+            <span class="count-done" id="stage-3-done">0</span><span>/3 Modul</span>
+          </div>
+        </div>
+
+        <div class="roadmap-stage" role="listitem" id="stage-4" aria-label="Tahap 4: Projek Interaktif">
+          <div class="roadmap-dot-wrapper">
+            <div class="roadmap-dot" aria-hidden="true">04</div>
+          </div>
+          <div class="roadmap-stage-label">Projek Interaktif</div>
+          <div class="roadmap-stage-desc">Portofolio & Real-World Apps</div>
+          <div class="roadmap-progress-bar" role="progressbar" aria-label="Progress Tahap 4" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+            <div class="roadmap-progress-fill" id="stage-4-fill" style="width:0%"></div>
+          </div>
+          <div class="roadmap-stage-count">
+            <span class="count-done" id="stage-4-done">0</span><span>/3 Modul</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── FILTER & SEARCH ────────────────────────── -->
+    <section class="filter-section" aria-label="Filter dan pencarian modul">
+
+      <div class="filter-top-row">
+        <!-- Search -->
+        <div class="search-wrapper" role="search">
+          <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Cari modul (judul atau deskripsi)…"
+            autocomplete="off"
+            aria-label="Cari modul berdasarkan judul atau deskripsi"
+          />
+          <button class="search-clear" id="search-clear" aria-label="Hapus pencarian" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Dropdowns -->
+        <div class="filter-dropdowns">
+          <div class="filter-select-wrapper">
+            <select class="filter-select" id="filter-status" aria-label="Filter berdasarkan status modul">
+              <option value="all">Semua Status</option>
+              <option value="not_started">Belum Dibuka</option>
+              <option value="in_progress">Sedang Dipelajari</option>
+              <option value="completed">Selesai</option>
+            </select>
+            <svg class="filter-select-caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+
+          <div class="filter-select-wrapper">
+            <select class="filter-select" id="filter-difficulty" aria-label="Filter berdasarkan tingkat kesulitan">
+              <option value="all">Semua Level</option>
+              <option value="beginner">Pemula</option>
+              <option value="intermediate">Menengah</option>
+              <option value="challenge">Tantangan</option>
+            </select>
+            <svg class="filter-select-caret" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polyline points="6 9 12 15 18 9"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Category Tags -->
+      <div class="filter-tags" id="filter-tags" role="group" aria-label="Filter berdasarkan kategori">
+        <button class="filter-tag active" data-category="all" aria-pressed="true">
+          Semua <span class="filter-tag-count" id="count-all">12</span>
+        </button>
+        <button class="filter-tag" data-category="HTML Dasar" aria-pressed="false">
+          HTML Dasar <span class="filter-tag-count" id="count-html">3</span>
+        </button>
+        <button class="filter-tag" data-category="CSS Styling" aria-pressed="false">
+          CSS Styling <span class="filter-tag-count" id="count-css">3</span>
+        </button>
+        <button class="filter-tag" data-category="CSS Layout" aria-pressed="false">
+          CSS Layout <span class="filter-tag-count" id="count-layout">3</span>
+        </button>
+        <button class="filter-tag" data-category="Projek Interaktif" aria-pressed="false">
+          Projek Interaktif <span class="filter-tag-count" id="count-project">3</span>
+        </button>
+        <button class="filter-tag bookmark-filter" data-category="bookmark" aria-pressed="false">
+          ★ Favorit Saya <span class="filter-tag-count" id="count-bookmark">0</span>
+        </button>
+      </div>
+
+      <!-- Results Info -->
+      <div class="results-info" aria-live="polite" aria-atomic="true">
+        <p class="results-count" id="results-count">
+          Menampilkan <strong id="results-num">12</strong> dari <strong>12</strong> modul
+        </p>
+      </div>
+
+    </section>
+
+    <!-- ── MODULE GRID ─────────────────────────────── -->
+    <section class="modules-section" aria-labelledby="modules-title">
+      <div id="module-grid" class="module-grid" role="list" aria-label="Daftar modul pembelajaran">
+        <!-- Cards are rendered by JavaScript -->
+      </div>
+    </section>
+
+  </div><!-- /container -->
+</main>
+
+<!-- ═══════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════ -->
+<footer class="site-footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-inner">
+      <p class="footer-brand"><span>&lt;/&gt; VITH</span> Education — Belajar, Bangun, Berkembang.</p>
+      <p class="footer-meta">Data tersimpan di browser lokal Anda &middot; WCAG 2.1 AA Compliant</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════
+     TOAST CONTAINER
+═══════════════════════════════════════════════ -->
+<div class="toast-container" id="toast-container" aria-live="polite" aria-relevant="additions" role="status"></div>
+
+<!-- ═══════════════════════════════════════════════
+     RESET CONFIRM MODAL
+═══════════════════════════════════════════════ -->
+<div class="modal-backdrop" id="reset-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+  <div class="modal-box">
+    <div class="modal-icon" aria-hidden="true">⚠️</div>
+    <h2 class="modal-title" id="modal-title">Reset Semua Progress?</h2>
+    <p class="modal-desc" id="modal-desc">
+      Seluruh status modul, bookmark, dan data belajar Anda akan direset ke kondisi awal. Tindakan ini tidak dapat dibatalkan.
+    </p>
+    <div class="modal-actions">
+      <button class="btn-modal-cancel" id="modal-cancel" aria-label="Batalkan reset">Batal</button>
+      <button class="btn-modal-confirm" id="modal-confirm" aria-label="Konfirmasi reset progress">Ya, Reset Sekarang</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════
+     JAVASCRIPT — STATE & LOGIC
+═══════════════════════════════════════════════ -->
+<script>
+/* ══════════════════════════════════════════════════
+   VITH EDUCATION LMS — Core Application Script
+   Pure Vanilla JS | No dependencies
+══════════════════════════════════════════════════ */
+
+'use strict';
+
+/* ── 1. MODULE DATA DEFINITIONS ─────────────────── */
+const MODULES = [
+  {
+    id: 'mod-01',
+    number: '01',
+    title: 'Pengenalan HTML & Struktur Dokumen',
+    desc: 'Pelajari fondasi web: apa itu HTML, struktur dokumen, elemen dasar, dan cara browser membaca kode Anda.',
+    category: 'HTML Dasar',
+    difficulty: 'beginner',
+    stage: 1,
+    duration: 45,
+    path: 'modules/01-pengenalan-html/index.html',
+  },
+  {
+    id: 'mod-02',
+    number: '02',
+    title: 'Elemen Semantik & Aksesibilitas',
+    desc: 'Kuasai tag semantik HTML5 seperti <header>, <nav>, <main>, <section>, dan <article> untuk struktur yang bermakna.',
+    category: 'HTML Dasar',
+    difficulty: 'beginner',
+    stage: 1,
+    duration: 60,
+    path: 'modules/02-elemen-semantik/index.html',
+  },
+  {
+    id: 'mod-03',
+    number: '03',
+    title: 'Form, Input & Validasi HTML',
+    desc: 'Bangun form interaktif dengan berbagai tipe input, label ARIA, dan validasi bawaan HTML5 tanpa JavaScript.',
+    category: 'HTML Dasar',
+    difficulty: 'intermediate',
+    stage: 1,
+    duration: 75,
+    path: 'modules/03-form-html/index.html',
+  },
+  {
+    id: 'mod-04',
+    number: '04',
+    title: 'CSS Fundamentals & Box Model',
+    desc: 'Pahami bagaimana CSS bekerja: cascade, specificity, inheritance, dan model kotak yang mengatur semua elemen di halaman.',
+    category: 'CSS Styling',
+    difficulty: 'beginner',
+    stage: 2,
+    duration: 60,
+    path: 'modules/04-css-fundamentals/index.html',
+  },
+  {
+    id: 'mod-05',
+    number: '05',
+    title: 'Tipografi, Warna & Custom Properties',
+    desc: 'Atur tipografi profesional, sistem warna yang konsisten, dan manfaatkan CSS Custom Properties (variabel) untuk desain yang scalable.',
+    category: 'CSS Styling',
+    difficulty: 'intermediate',
+    stage: 2,
+    duration: 90,
+    path: 'modules/05-tipografi-warna/index.html',
+  },
+  {
+    id: 'mod-06',
+    number: '06',
+    title: 'Animasi CSS & Micro-interactions',
+    desc: 'Hidupkan antarmuka Anda dengan transition, keyframe animation, dan micro-interactions yang meningkatkan pengalaman pengguna.',
+    category: 'CSS Styling',
+    difficulty: 'challenge',
+    stage: 2,
+    duration: 120,
+    path: 'modules/06-animasi-css/index.html',
+  },
+  {
+    id: 'mod-07',
+    number: '07',
+    title: 'Flexbox: Layout Satu Dimensi',
+    desc: 'Kuasai Flexbox sepenuhnya: axis, alignment, flex-grow/shrink/basis, wrapping, dan pola layout umum yang Anda temui setiap hari.',
+    category: 'CSS Layout',
+    difficulty: 'intermediate',
+    stage: 3,
+    duration: 90,
+    path: 'modules/07-flexbox/index.html',
+  },
+  {
+    id: 'mod-08',
+    number: '08',
+    title: 'CSS Grid: Layout Dua Dimensi',
+    desc: 'Bangun layout kompleks dengan CSS Grid: template areas, auto-placement, subgrid, dan teknik advanced untuk desain yang powerful.',
+    category: 'CSS Layout',
+    difficulty: 'intermediate',
+    stage: 3,
+    duration: 105,
+    path: 'modules/08-css-grid/index.html',
+  },
+  {
+    id: 'mod-09',
+    number: '09',
+    title: 'Responsive Design & Media Queries',
+    desc: 'Rancang antarmuka yang bekerja sempurna di semua perangkat: mobile-first approach, breakpoints, fluid typography, dan container queries.',
+    category: 'CSS Layout',
+    difficulty: 'challenge',
+    stage: 3,
+    duration: 120,
+    path: 'modules/09-responsive-design/index.html',
+  },
+  {
+    id: 'mod-10',
+    number: '10',
+    title: 'Projek: Landing Page Portofolio',
+    desc: 'Bangun landing page portofolio profesional dari nol menggunakan semua teknik HTML & CSS yang sudah dipelajari sebelumnya.',
+    category: 'Projek Interaktif',
+    difficulty: 'intermediate',
+    stage: 4,
+    duration: 180,
+    path: 'modules/10-landing-page/index.html',
+  },
+  {
+    id: 'mod-11',
+    number: '11',
+    title: 'Projek: Dashboard Analytics UI',
+    desc: 'Rekonstruksi dashboard data analytics modern dengan chart area, sidebar, dark/light toggle, dan komponen reusable.',
+    category: 'Projek Interaktif',
+    difficulty: 'challenge',
+    stage: 4,
+    duration: 240,
+    path: 'modules/11-dashboard-ui/index.html',
+  },
+  {
+    id: 'mod-12',
+    number: '12',
+    title: 'Projek: Aplikasi Todo & Local Storage',
+    desc: 'Integrasikan HTML, CSS, dan JavaScript dasar untuk membangun aplikasi Todo fungsional dengan persistensi data LocalStorage.',
+    category: 'Projek Interaktif',
+    difficulty: 'challenge',
+    stage: 4,
+    duration: 210,
+    path: 'modules/12-todo-app/index.html',
+  },
+];
+
+/* ── 2. STORAGE KEYS ────────────────────────────── */
+const STORAGE_KEY_STATUS    = 'vith_lms_status';
+const STORAGE_KEY_BOOKMARKS = 'vith_lms_bookmarks';
+
+/* ── 3. STATE MANAGEMENT ────────────────────────── */
+const State = {
+  statuses:  {},   // { [moduleId]: 'not_started' | 'in_progress' | 'completed' }
+  bookmarks: [],   // [moduleId, ...]
+  filter: {
+    query:      '',
+    category:   'all',
+    status:     'all',
+    difficulty: 'all',
+  },
+
+  load() {
+    try {
+      const savedStatus    = localStorage.getItem(STORAGE_KEY_STATUS);
+      const savedBookmarks = localStorage.getItem(STORAGE_KEY_BOOKMARKS);
+      if (savedStatus)    this.statuses   = JSON.parse(savedStatus);
+      if (savedBookmarks) this.bookmarks  = JSON.parse(savedBookmarks);
+    } catch (e) {
+      console.warn('[VITH LMS] Could not load state from localStorage:', e);
+      this.statuses  = {};
+      this.bookmarks = [];
+    }
+    // Ensure every module has a status
+    MODULES.forEach(m => {
+      if (!this.statuses[m.id]) this.statuses[m.id] = 'not_started';
+    });
+  },
+
+  save() {
+    try {
+      localStorage.setItem(STORAGE_KEY_STATUS,    JSON.stringify(this.statuses));
+      localStorage.setItem(STORAGE_KEY_BOOKMARKS, JSON.stringify(this.bookmarks));
+    } catch (e) {
+      console.warn('[VITH LMS] Could not save state:', e);
+    }
+  },
+
+  reset() {
+    this.statuses  = {};
+    this.bookmarks = [];
+    MODULES.forEach(m => { this.statuses[m.id] = 'not_started'; });
+    this.save();
+  },
+
+  setStatus(id, status) {
+    this.statuses[id] = status;
+    this.save();
+  },
+
+  toggleBookmark(id) {
+    const idx = this.bookmarks.indexOf(id);
+    if (idx === -1) {
+      this.bookmarks.push(id);
+    } else {
+      this.bookmarks.splice(idx, 1);
+    }
+    this.save();
+    return this.bookmarks.includes(id);
+  },
+
+  isBookmarked(id) {
+    return this.bookmarks.includes(id);
+  },
+
+  getStatus(id) {
+    return this.statuses[id] || 'not_started';
+  },
+};
+
+/* ── 4. TOAST SYSTEM ────────────────────────────── */
+const Toast = {
+  container: null,
+  queue: [],
+
+  init() {
+    this.container = document.getElementById('toast-container');
+  },
+
+  show(type, title, msg, duration = 3000) {
+    const icons = {
+      success: '✓',
+      info:    'ℹ',
+      warning: '⚠',
+      error:   '✕',
+    };
+
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.setAttribute('role', 'status');
+    toast.setAttribute('aria-live', 'polite');
+    toast.innerHTML = `
+      <div class="toast-icon" aria-hidden="true">${icons[type] || 'ℹ'}</div>
+      <div class="toast-body">
+        <div class="toast-title">${this._escapeHtml(title)}</div>
+        ${msg ? `<div class="toast-msg">${this._escapeHtml(msg)}</div>` : ''}
+      </div>
+      <button class="toast-close" aria-label="Tutup notifikasi">✕</button>
+    `;
+
+    const closeBtn = toast.querySelector('.toast-close');
+    closeBtn.addEventListener('click', () => this._dismiss(toast));
+
+    this.container.appendChild(toast);
+
+    const timer = setTimeout(() => this._dismiss(toast), duration);
+    toast._timer = timer;
+
+    // Limit max toasts visible
+    const toasts = this.container.querySelectorAll('.toast');
+    if (toasts.length > 4) {
+      this._dismiss(toasts[0]);
+    }
+  },
+
+  _dismiss(toast) {
+    if (!toast || !toast.parentNode) return;
+    clearTimeout(toast._timer);
+    toast.classList.add('toast-out');
+    toast.addEventListener('animationend', () => {
+      if (toast.parentNode) toast.parentNode.removeChild(toast);
+    }, { once: true });
+  },
+
+  _escapeHtml(str) {
+    const div = document.createElement('div');
+    div.textContent = str;
+    return div.innerHTML;
+  },
+};
+
+/* ── 5. RENDER ENGINE ───────────────────────────── */
+const Renderer = {
+  grid: null,
+
+  init() {
+    this.grid = document.getElementById('module-grid');
+  },
+
+  getCategoryBadgeClass(category) {
+    const map = {
+      'HTML Dasar':        'badge-html',
+      'CSS Styling':       'badge-css',
+      'CSS Layout':        'badge-layout',
+      'Projek Interaktif': 'badge-project',
+    };
+    return map[category] || 'badge-html';
+  },
+
+  getDifficultyLabel(diff) {
+    const map = { beginner: 'Pemula', intermediate: 'Menengah', challenge: 'Tantangan' };
+    return map[diff] || diff;
+  },
+
+  getDifficultyBadgeClass(diff) {
+    return `badge-${diff}`;
+  },
+
+  getStatusLabel(status) {
+    const map = {
+      not_started: 'Belum Dibuka',
+      in_progress:  'Sedang Dipelajari',
+      completed:    'Selesai',
+    };
+    return map[status] || 'Belum Dibuka';
+  },
+
+  getActionBtn(status, path) {
+    if (status === 'completed') {
+      return `<a href="${path}" class="btn-action btn-review" aria-label="Tinjau ulang modul">
+                <span>Tinjau Ulang</span>
+                <span aria-hidden="true">↗</span>
+              </a>`;
+    }
+    if (status === 'in_progress') {
+      return `<a href="${path}" class="btn-action btn-continue" aria-label="Lanjutkan belajar modul">
+                <span>Lanjutkan</span>
+                <span aria-hidden="true">→</span>
+              </a>`;
+    }
+    return `<a href="${path}" class="btn-action btn-start" aria-label="Mulai belajar modul">
+              <span>Mulai Belajar</span>
+              <span aria-hidden="true">→</span>
+            </a>`;
+  },
+
+  formatDuration(minutes) {
+    const h = Math.floor(minutes / 60);
+    const m = minutes % 60;
+    if (h > 0 && m > 0) return `${h}j ${m}m`;
+    if (h > 0) return `${h} jam`;
+    return `${m} menit`;
+  },
+
+  renderCard(module) {
+    const status     = State.getStatus(module.id);
+    const isBookmark = State.isBookmarked(module.id);
+    const catClass   = this.getCategoryBadgeClass(module.category);
+    const diffClass  = this.getDifficultyBadgeClass(module.difficulty);
+    const diffLabel  = this.getDifficultyLabel(module.difficulty);
+    const statusLabel= this.getStatusLabel(status);
+    const actionBtn  = this.getActionBtn(status, module.path);
+    const duration   = this.formatDuration(module.duration);
+    const bookmarkActive = isBookmark ? 'bookmarked' : '';
+    const bookmarkAriaLabel = isBookmark ? 'Hapus dari favorit' : 'Tambahkan ke favorit';
+
+    const dropdownItems = [
+      { value: 'not_started', label: 'Belum Dibuka',     dot: 'var(--text-muted)' },
+      { value: 'in_progress', label: 'Sedang Dipelajari', dot: 'var(--accent-primary)' },
+      { value: 'completed',   label: 'Selesai',           dot: 'var(--accent-secondary)' },
+    ].map(opt => {
+      const isCurrent = status === opt.value ? 'current' : '';
+      return `<button class="dropdown-item ${isCurrent}" data-status="${opt.value}" role="menuitem">
+                <span class="dropdown-item-dot" style="background:${opt.dot}" aria-hidden="true"></span>
+                ${opt.label}
+                ${isCurrent ? '<span class="sr-only"> (status saat ini)</span>' : ''}
+              </button>`;
+    }).join('');
+
+    const li = document.createElement('article');
+    li.className  = `module-card status-${status}`;
+    li.dataset.id = module.id;
+    li.setAttribute('role', 'listitem');
+    li.setAttribute('aria-label', `Modul ${module.number}: ${module.title}`);
+
+    li.innerHTML = `
+      <div class="card-top">
+        <div class="card-badges">
+          <span class="badge ${catClass}">${module.category}</span>
+          <span class="badge ${diffClass}">${diffLabel}</span>
+        </div>
+        <button
+          class="btn-bookmark ${bookmarkActive}"
+          data-module-id="${module.id}"
+          aria-label="${bookmarkAriaLabel}"
+          aria-pressed="${isBookmark}"
+          title="${bookmarkAriaLabel}"
+        >${isBookmark ? '★' : '☆'}</button>
+      </div>
+
+      <div class="card-body">
+        <div class="card-number" aria-hidden="true">#${module.number}</div>
+        <h3 class="card-title">${module.title}</h3>
+        <p class="card-desc">${module.desc}</p>
+        <div class="card-duration">
+          <svg class="duration-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+          </svg>
+          <span>Estimasi: <strong>${duration}</strong></span>
+        </div>
+      </div>
+
+      <div class="card-footer">
+        <span class="badge-status">${statusLabel}</span>
+        ${actionBtn}
+        <div class="status-dropdown-wrapper">
+          <button
+            class="btn-status-toggle"
+            data-module-id="${module.id}"
+            aria-haspopup="true"
+            aria-expanded="false"
+            aria-label="Ubah status modul ${module.title}"
+            title="Ubah Status"
+          >⋮</button>
+          <div class="status-dropdown-menu" role="menu" aria-label="Pilih status modul">
+            <div class="dropdown-label">Ubah Status</div>
+            ${dropdownItems}
+          </div>
+        </div>
+      </div>
+    `;
+
+    return li;
+  },
+
+  renderAll(modules) {
+    this.grid.innerHTML = '';
+
+    if (modules.length === 0) {
+      const empty = document.createElement('div');
+      empty.className = 'empty-state';
+      empty.setAttribute('role', 'status');
+      empty.innerHTML = `
+        <svg class="empty-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <h3 class="empty-title">Tidak Ada Modul Ditemukan</h3>
+        <p class="empty-desc">Coba ubah kata kunci pencarian atau filter yang aktif untuk menemukan modul yang Anda cari.</p>
+      `;
+      this.grid.appendChild(empty);
+      return;
+    }
+
+    modules.forEach(mod => {
+      this.grid.appendChild(this.renderCard(mod));
+    });
+  },
+};
+
+/* ── 6. FILTER ENGINE ───────────────────────────── */
+const Filter = {
+  apply() {
+    const { query, category, status, difficulty } = State.filter;
+    const q = query.toLowerCase().trim();
+
+    return MODULES.filter(mod => {
+      // Text search
+      if (q && !mod.title.toLowerCase().includes(q) && !mod.desc.toLowerCase().includes(q)) return false;
+
+      // Bookmark filter
+      if (category === 'bookmark' && !State.isBookmarked(mod.id)) return false;
+
+      // Category filter
+      if (category !== 'all' && category !== 'bookmark' && mod.category !== category) return false;
+
+      // Status filter
+      if (status !== 'all' && State.getStatus(mod.id) !== status) return false;
+
+      // Difficulty filter
+      if (difficulty !== 'all' && mod.difficulty !== difficulty) return false;
+
+      return true;
+    });
+  },
+};
+
+/* ── 7. UI UPDATERS ─────────────────────────────── */
+const UI = {
+  updateProgress() {
+    const total     = MODULES.length;
+    const completed = MODULES.filter(m => State.getStatus(m.id) === 'completed').length;
+    const inProg    = MODULES.filter(m => State.getStatus(m.id) === 'in_progress').length;
+    const bm        = State.bookmarks.length;
+    const pct       = total > 0 ? Math.round((completed / total) * 100) : 0;
+
+    // Header progress
+    const fill  = document.getElementById('progress-fill');
+    const stat  = document.getElementById('progress-stat');
+    const track = document.getElementById('progress-track');
+    if (fill)  fill.style.width  = `${pct}%`;
+    if (stat)  stat.textContent  = `${completed} / ${total} Modul`;
+    if (track) {
+      track.setAttribute('aria-valuenow', pct);
+    }
+
+    // Stats bar
+    const elCompleted  = document.getElementById('stat-completed');
+    const elInProg     = document.getElementById('stat-inprogress');
+    const elBookmarks  = document.getElementById('stat-bookmarks');
+    if (elCompleted) elCompleted.textContent = completed;
+    if (elInProg)    elInProg.textContent    = inProg;
+    if (elBookmarks) elBookmarks.textContent = bm;
+
+    // Time remaining
+    const remainingMinutes = MODULES
+      .filter(m => State.getStatus(m.id) !== 'completed')
+      .reduce((acc, m) => acc + m.duration, 0);
+    const h = Math.floor(remainingMinutes / 60);
+    const m = remainingMinutes % 60;
+    const timeEl = document.getElementById('time-remaining');
+    if (timeEl) timeEl.textContent = `${h}j ${m}m`;
+
+    // Bookmark tag count
+    const countBm = document.getElementById('count-bookmark');
+    if (countBm) countBm.textContent = bm;
+  },
+
+  updateRoadmap() {
+    for (let stage = 1; stage <= 4; stage++) {
+      const stageModules = MODULES.filter(m => m.stage === stage);
+      const total        = stageModules.length;
+      const done         = stageModules.filter(m => State.getStatus(m.id) === 'completed').length;
+      const pct          = total > 0 ? Math.round((done / total) * 100) : 0;
+
+      const fill  = document.getElementById(`stage-${stage}-fill`);
+      const count = document.getElementById(`stage-${stage}-done`);
+      const el    = document.getElementById(`stage-${stage}`);
+
+      if (fill)  fill.style.width  = `${pct}%`;
+      if (count) count.textContent = done;
+
+      if (el) {
+        el.classList.remove('completed', 'active', 'locked');
+        const prevDone = stage === 1 ? true :
+          MODULES.filter(m => m.stage === stage - 1)
+                 .every(m => State.getStatus(m.id) === 'completed');
+
+        if (done === total && total > 0) {
+          el.classList.add('completed');
+        } else if (prevDone && done < total) {
+          el.classList.add('active');
+        } else if (!prevDone) {
+          el.classList.add('locked');
+        } else {
+          el.classList.add('active');
+        }
+
+        // Update progressbar ARIA
+        const pbEl = el.querySelector('.roadmap-progress-bar');
+        if (pbEl) pbEl.setAttribute('aria-valuenow', pct);
+      }
+    }
+  },
+
+  updateResultsCount(filtered) {
+    const num = document.getElementById('results-num');
+    if (num) num.textContent = filtered.length;
+  },
+};
+
+/* ── 8. MAIN APP CONTROLLER ─────────────────────── */
+const App = {
+  activeDropdown: null,
+
+  init() {
+    State.load();
+    Toast.init();
+    Renderer.init();
+
+    this.bindEvents();
+    this.refresh();
+  },
+
+  refresh() {
+    const filtered = Filter.apply();
+    Renderer.renderAll(filtered);
+    UI.updateProgress();
+    UI.updateRoadmap();
+    UI.updateResultsCount(filtered);
+    this.bindCardEvents();
+  },
+
+  bindEvents() {
+    // Search
+    const searchInput = document.getElementById('search-input');
+    const searchClear = document.getElementById('search-clear');
+
+    searchInput.addEventListener('input', e => {
+      State.filter.query = e.target.value;
+      searchClear.classList.toggle('visible', e.target.value.length > 0);
+      this.refresh();
+    });
+
+    searchClear.addEventListener('click', () => {
+      searchInput.value       = '';
+      State.filter.query      = '';
+      searchClear.classList.remove('visible');
+      searchInput.focus();
+      this.refresh();
+    });
+
+    // Category filter tags
+    const tagsContainer = document.getElementById('filter-tags');
+    tagsContainer.addEventListener('click', e => {
+      const btn = e.target.closest('.filter-tag');
+      if (!btn) return;
+      const cat = btn.dataset.category;
+      State.filter.category = cat;
+
+      tagsContainer.querySelectorAll('.filter-tag').forEach(t => {
+        t.classList.remove('active');
+        t.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
+
+      this.refresh();
+    });
+
+    // Status filter
+    document.getElementById('filter-status').addEventListener('change', e => {
+      State.filter.status = e.target.value;
+      this.refresh();
+    });
+
+    // Difficulty filter
+    document.getElementById('filter-difficulty').addEventListener('change', e => {
+      State.filter.difficulty = e.target.value;
+      this.refresh();
+    });
+
+    // Close dropdowns on outside click
+    document.addEventListener('click', e => {
+      if (!e.target.closest('.status-dropdown-wrapper')) {
+        this.closeAllDropdowns();
+      }
+    });
+
+    // Escape key: close dropdowns & modals
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        this.closeAllDropdowns();
+        this.closeModal();
+      }
+    });
+
+    // Reset button
+    document.getElementById('btn-reset').addEventListener('click', () => {
+      this.openModal();
+    });
+
+    // Modal buttons
+    document.getElementById('modal-cancel').addEventListener('click', () => {
+      this.closeModal();
+    });
+    document.getElementById('modal-confirm').addEventListener('click', () => {
+      this.confirmReset();
+    });
+    document.getElementById('reset-modal').addEventListener('click', e => {
+      if (e.target === e.currentTarget) this.closeModal();
+    });
+  },
+
+  bindCardEvents() {
+    const grid = document.getElementById('module-grid');
+
+    // Bookmark buttons (event delegation)
+    grid.addEventListener('click', e => {
+      // Bookmark toggle
+      const bmBtn = e.target.closest('.btn-bookmark');
+      if (bmBtn) {
+        e.stopPropagation();
+        const id        = bmBtn.dataset.moduleId;
+        const isNowBm   = State.toggleBookmark(id);
+        const module    = MODULES.find(m => m.id === id);
+        const modName   = module ? module.title : id;
+
+        bmBtn.classList.toggle('bookmarked', isNowBm);
+        bmBtn.textContent = isNowBm ? '★' : '☆';
+        bmBtn.setAttribute('aria-pressed', isNowBm);
+        bmBtn.setAttribute('aria-label', isNowBm ? 'Hapus dari favorit' : 'Tambahkan ke favorit');
+        bmBtn.title = isNowBm ? 'Hapus dari favorit' : 'Tambahkan ke favorit';
+
+        UI.updateProgress();
+        UI.updateRoadmap();
+
+        const countBm = document.getElementById('count-bookmark');
+        if (countBm) countBm.textContent = State.bookmarks.length;
+
+        // Update bookmark filter count tag
+        const statBm = document.getElementById('stat-bookmarks');
+        if (statBm) statBm.textContent = State.bookmarks.length;
+
+        if (isNowBm) {
+          Toast.show('warning', 'Ditambahkan ke Favorit', `"${modName}" tersimpan di bookmark Anda.`);
+        } else {
+          Toast.show('info', 'Dihapus dari Favorit', `"${modName}" telah dihapus dari bookmark.`);
+        }
+        return;
+      }
+
+      // Status dropdown toggle
+      const toggleBtn = e.target.closest('.btn-status-toggle');
+      if (toggleBtn) {
+        e.stopPropagation();
+        const wrapper  = toggleBtn.closest('.status-dropdown-wrapper');
+        const menu     = wrapper.querySelector('.status-dropdown-menu');
+        const isOpen   = menu.classList.contains('open');
+
+        this.closeAllDropdowns();
+
+        if (!isOpen) {
+          menu.classList.add('open');
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          this.activeDropdown = { menu, toggleBtn };
+        }
+        return;
+      }
+
+      // Dropdown items
+      const dropItem = e.target.closest('.dropdown-item[data-status]');
+      if (dropItem) {
+        e.stopPropagation();
+        const newStatus = dropItem.dataset.status;
+        const card      = dropItem.closest('.module-card');
+        if (!card) return;
+        const id        = card.dataset.id;
+        const module    = MODULES.find(m => m.id === id);
+        const modName   = module ? module.title : id;
+        const oldStatus = State.getStatus(id);
+
+        if (oldStatus === newStatus) {
+          this.closeAllDropdowns();
+          return;
+        }
+
+        State.setStatus(id, newStatus);
+        this.closeAllDropdowns();
+
+        // Re-render that card in place
+        const newCard = Renderer.renderCard(module);
+        card.replaceWith(newCard);
+        this.bindCardEvents();   // re-delegate not needed, events on grid
+
+        UI.updateProgress();
+        UI.updateRoadmap();
+
+        const labels = {
+          not_started: 'Belum Dibuka',
+          in_progress:  'Sedang Dipelajari',
+          completed:    'Selesai',
+        };
+        const types = { not_started: 'info', in_progress: 'info', completed: 'success' };
+        Toast.show(
+          types[newStatus],
+          'Status Diperbarui',
+          `"${modName}" → ${labels[newStatus]}.`
+        );
+        return;
+      }
+    });
+  },
+
+  closeAllDropdowns() {
+    document.querySelectorAll('.status-dropdown-menu.open').forEach(menu => {
+      menu.classList.remove('open');
+      const toggle = menu.closest('.status-dropdown-wrapper')?.querySelector('.btn-status-toggle');
+      if (toggle) toggle.setAttribute('aria-expanded', 'false');
+    });
+    this.activeDropdown = null;
+  },
+
+  openModal() {
+    const modal = document.getElementById('reset-modal');
+    modal.classList.add('open');
+    modal.removeAttribute('aria-hidden');
+    document.body.style.overflow = 'hidden';
+    setTimeout(() => {
+      document.getElementById('modal-cancel').focus();
+    }, 60);
+  },
+
+  closeModal() {
+    const modal = document.getElementById('reset-modal');
+    modal.classList.remove('open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    document.getElementById('btn-reset').focus();
+  },
+
+  confirmReset() {
+    State.reset();
+    // Reset UI filters
+    State.filter = { query: '', category: 'all', status: 'all', difficulty: 'all' };
+    document.getElementById('search-input').value = '';
+    document.getElementById('search-clear').classList.remove('visible');
+    document.getElementById('filter-status').value     = 'all';
+    document.getElementById('filter-difficulty').value = 'all';
+    document.querySelectorAll('.filter-tag').forEach((t, i) => {
+      t.classList.toggle('active', i === 0);
+      t.setAttribute('aria-pressed', i === 0 ? 'true' : 'false');
+    });
+
+    this.closeModal();
+    this.refresh();
+    Toast.show('warning', 'Progress Direset', 'Semua data belajar telah dikembalikan ke awal.');
+  },
+};
+
+/* ── 9. BOOTSTRAP ───────────────────────────────── */
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => App.init());
+} else {
+  App.init();
+}
+</script>
+</body>
+</html>
