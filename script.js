@@ -504,9 +504,12 @@ const UI = {
     const elCompleted  = document.getElementById('stat-completed');
     const elInProg     = document.getElementById('stat-inprogress');
     const elBookmarks  = document.getElementById('stat-bookmarks');
+    const elTotal      = document.getElementById('stat-total');
+
     if (elCompleted) elCompleted.textContent = completed;
     if (elInProg)    elInProg.textContent    = inProg;
     if (elBookmarks) elBookmarks.textContent = bm;
+    if (elTotal)     elTotal.textContent     = total;
 
     // Time remaining
     const remainingMinutes = MODULES
