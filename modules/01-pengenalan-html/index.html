@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="id" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Modul 1: Pengenalan HTML & Struktur Dokumen — VITH Education" />
+  <title>Modul 01 · Pengenalan HTML · VITH Education</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ============================================================
+       TOP NAVIGATION (fixed)
+       ============================================================ -->
+  <header class="top-nav" role="banner">
+    <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle sidebar" aria-expanded="false">☰</button>
+    <a href="../../index.html" class="back-btn">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+      </svg>
+      <span>Kembali ke Dashboard</span>
+    </a>
+    <div class="nav-info">
+      <span class="badge">HTML Dasar</span>
+      <span class="difficulty">⚡ Beginner</span>
+      <span class="time">⏱ <span>45 Menit</span></span>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       LAYOUT UTAMA (split view)
+       ============================================================ -->
+  <div class="module-layout">
+
+    <!-- ─── SIDEBAR KIRI ─── -->
+    <aside class="sidebar" id="sidebar" role="navigation" aria-label="Daftar isi modul">
+      <div class="progress-section">
+        <div class="label">
+          <span>Progress membaca</span>
+          <span id="progressText">0%</span>
+        </div>
+        <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          <div class="fill" id="progressFill" style="width:0%;"></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="toc-title">Daftar Isi</div>
+        <ul class="toc-list" id="tocList">
+          <li><a href="#pendahuluan" data-target="pendahuluan">📖 Pendahuluan & Tujuan</a></li>
+          <li><a href="#konsep" data-target="konsep">🧠 Penjelasan Konsep</a></li>
+          <li><a href="#codeblock" data-target="codeblock">💻 Code Block</a></li>
+          <li><a href="#callout" data-target="callout">📌 Tips & Aksesibilitas</a></li>
+          <li><a href="#livepreview" data-target="livepreview">🔍 Live Preview</a></li>
+          <li><a href="#challenge" data-target="challenge">🏆 Mini Challenge</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- ─── MAIN CONTENT ─── -->
+    <main class="main-content" id="mainContent">
+
+      <!-- ========== 1. PENDAHULUAN & TUJUAN ========== -->
+      <section class="section-block" id="pendahuluan">
+        <h2><span class="emoji">📖</span> Pendahuluan &amp; Tujuan Pembelajaran</h2>
+        <p>
+          Selamat datang di modul pertama! Di sini Anda akan mempelajari fondasi dari setiap halaman web: 
+          <strong>HTML</strong> (HyperText Markup Language). Kami akan membahas apa itu HTML, bagaimana 
+          struktur dokumen HTML, dan elemen-elemen dasar yang sering digunakan.
+        </p>
+        <p><strong>Tujuan pembelajaran:</strong></p>
+        <ul>
+          <li>Memahami peran HTML dalam pengembangan web.</li>
+          <li>Mengenal struktur dasar dokumen HTML.</li>
+          <li>Mampu menulis elemen HTML dasar (heading, paragraf, tautan, gambar, daftar).</li>
+          <li>Mengerti pentingnya elemen semantik untuk aksesibilitas dan SEO.</li>
+        </ul>
+      </section>
+
+      <!-- ========== 2. PENJELASAN KONSEP ========== -->
+      <section class="section-block" id="konsep">
+        <h2><span class="emoji">🧠</span> Penjelasan Konsep</h2>
+
+        <h3>Apa itu HTML?</h3>
+        <p>
+          <strong>HTML</strong> (HyperText Markup Language) adalah bahasa markup standar yang digunakan 
+          untuk membuat dan menyusun halaman web. HTML memberikan struktur dasar pada konten yang Anda 
+          lihat di browser, seperti teks, gambar, tautan, formulir, dan lainnya.
+        </p>
+        <p>
+          HTML bekerja bersama dengan CSS (untuk tampilan) dan JavaScript (untuk interaktivitas) untuk 
+          membangun pengalaman web yang lengkap.
+        </p>
+
+        <h3>Struktur Dasar Dokumen HTML</h3>
+        <p>Setiap dokumen HTML memiliki kerangka wajib seperti di bawah ini:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+  &lt;head&gt;
+    &lt;meta charset="UTF-8" /&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
+    &lt;title&gt;Judul Halaman&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;!-- Konten utama ditulis di sini --&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+        <ul>
+          <li><code>&lt;!DOCTYPE html&gt;</code> — deklarasi tipe dokumen (HTML5).</li>
+          <li><code>&lt;html&gt;</code> — elemen akar, mencakup seluruh halaman.</li>
+          <li><code>&lt;head&gt;</code> — berisi informasi meta, judul, dan tautan ke CSS/JS.</li>
+          <li><code>&lt;body&gt;</code> — tempat semua konten yang terlihat oleh pengguna.</li>
+        </ul>
+
+        <h3>Elemen Dasar HTML</h3>
+        <p><strong>Heading</strong> — gunakan <code>&lt;h1&gt;</code> sampai <code>&lt;h6&gt;</code>.</p>
+        <div class="code-block">
+          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
+          <pre><code>&lt;h1&gt;Judul Utama&lt;/h1&gt;
+&lt;h2&gt;Subjudul&lt;/h2&gt;
+&lt;h3&gt;Bagian lebih kecil&lt;/h3&gt;</code></pre>
+        </div>
+
+        <p><strong>Paragraf</strong> — gunakan <code>&lt;p&gt;</code>.</p>
+        <div class="code-block">
+          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
+          <pre><code>&lt;p&gt;Ini adalah sebuah paragraf.&lt;/p&gt;</code></pre>
+        </div>
+
+        <p><strong>Tautan</strong> — gunakan <code>&lt;a href="url"&gt;</code>.</p>
+        <div class="code-block">
+          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
+          <pre><code>&lt;a href="https://example.com"&gt;Kunjungi situs contoh&lt;/a&gt;</code></pre>
+        </div>
+
+        <p><strong>Gambar</strong> — gunakan <code>&lt;img src="gambar.jpg" alt="deskripsi" /&gt;</code>.</p>
+        <div class="code-block">
+          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
+          <pre><code>&lt;img src="logo.png" alt="Logo VITH Education" width="200" /&gt;</code></pre>
+        </div>
+
+        <p><strong>Daftar</strong> — tak berurutan (<code>&lt;ul&gt;</code>) dan berurutan (<code>&lt;ol&gt;</code>).</p>
+        <div class="code-block">
+          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
+          <pre><code>&lt;ul&gt;
+  &lt;li&gt;Item pertama&lt;/li&gt;
+  &lt;li&gt;Item kedua&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Langkah 1&lt;/li&gt;
+  &lt;li&gt;Langkah 2&lt;/li&gt;
+&lt;/ol&gt;</code></pre>
+        </div>
+
+        <h3>Elemen Semantik</h3>
+        <p>
+          Elemen semantik memberikan makna pada struktur, membantu mesin pencari dan pembaca layar 
+          memahami konten. Contoh: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, 
+          <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, 
+          <code>&lt;footer&gt;</code>. Modul berikutnya akan membahasnya lebih dalam.
+        </p>
+      </section>
+
+      <!-- ========== 3. CODE BLOCK ========== -->
+      <section class="section-block" id="codeblock">
+        <h2><span class="emoji">💻</span> Code Block / IDE Snippet</h2>
+        <p>Berikut adalah contoh kode HTML lengkap dengan struktur dan elemen dasar:</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Halaman Pertama Saya&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Selamat Datang!&lt;/h1&gt;
+  &lt;p&gt;Ini adalah halaman web pertama saya. Saya belajar HTML.&lt;/p&gt;
+  &lt;a href="https://example.com"&gt;Kunjungi contoh&lt;/a&gt;
+  &lt;img src="https://via.placeholder.com/150" alt="Placeholder" /&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Poin 1&lt;/li&gt;
+    &lt;li&gt;Poin 2&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+        </div>
+      </section>
+
+      <!-- ========== 4. CALLOUT / TIPS ========== -->
+      <section class="section-block" id="callout">
+        <h2><span class="emoji">📌</span> Tips &amp; Aksesibilitas</h2>
+        <div class="callout">
+          <span class="icon">💡</span>
+          <div class="content">
+            <strong>Tips Developer:</strong> Selalu gunakan atribut <code>alt</code> pada gambar untuk 
+            memberikan deskripsi teks alternatif. Ini penting bagi pengguna dengan pembaca layar dan 
+            juga membantu SEO.
+          </div>
+        </div>
+        <div class="callout" style="border-left-color: var(--accent-gold); background: rgba(255, 213, 79, 0.06);">
+          <span class="icon">⚠️</span>
+          <div class="content">
+            <strong>Peringatan:</strong> Pastikan struktur heading (<code>&lt;h1&gt;</code> – 
+            <code>&lt;h6&gt;</code>) berurutan dan tidak melompat. Gunakan <code>&lt;h1&gt;</code> 
+            hanya sekali per halaman untuk judul utama.
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 5. LIVE PREVIEW ========== -->
+      <section class="section-block" id="livepreview">
+        <h2><span class="emoji">🔍</span> Live Preview Panel</h2>
+        <p>
+          Coba tulis kode HTML di bawah ini. Hasilnya akan langsung terlihat di panel preview secara 
+          <strong>real-time</strong> (atau dengan tombol Jalankan jika auto-refresh dimatikan).
+        </p>
+
+        <div class="live-editor">
+          <div class="editor-toolbar">
+            <div class="left">
+              <label>
+                <input type="checkbox" id="autoRefresh" checked /> Auto-refresh
+              </label>
+              <span style="color: var(--text-muted);">|</span>
+              <span id="lineCount">Baris: 1</span>
+            </div>
+            <div class="right">
+              <button id="resetCodeBtn">↺ Reset Kode</button>
+              <button class="btn-run" id="runBtn">▶ Jalankan</button>
+            </div>
+          </div>
+          <div class="editor-body">
+            <textarea id="liveEditor" spellcheck="false" aria-label="Editor HTML live" rows="10">&lt;h1&gt;Halo, Dunia!&lt;/h1&gt;
+&lt;p&gt;Ini adalah paragraf pertama saya.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Belajar HTML itu menyenangkan&lt;/li&gt;
+  &lt;li&gt;Coba ubah kode ini!&lt;/li&gt;
+&lt;/ul&gt;</textarea>
+            <div class="preview-panel" id="previewPanel">
+              <div class="placeholder" id="placeholderPreview">▶ Hasil kode akan muncul di sini</div>
+              <iframe id="previewIframe" sandbox="allow-scripts allow-modals allow-same-origin" loading="lazy" style="display:none;"></iframe>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 6. MINI CHALLENGE ========== -->
+      <section class="section-block" id="challenge">
+        <h2><span class="emoji">🏆</span> Mini Challenge</h2>
+        <div class="challenge-box">
+          <h3>📝 Tugas Anda</h3>
+          <p>
+            Buatlah sebuah halaman HTML sederhana yang berisi:
+          </p>
+          <ul>
+            <li>Sebuah <strong>judul utama</strong> (<code>&lt;h1&gt;</code>) dengan teks bebas.</li>
+            <li>Dua paragraf (<code>&lt;p&gt;</code>) yang menceritakan sesuatu tentang diri Anda.</li>
+            <li>Sebuah <strong>tautan</strong> ke situs favorit Anda.</li>
+            <li>Sebuah <strong>daftar tak berurutan</strong> dengan 3 hobi Anda.</li>
+          </ul>
+          <p>
+            Gunakan <strong>editor Live Preview</strong> di atas untuk menulis kode Anda. 
+            Anda bisa mengedit kode yang sudah ada atau mulai dari awal dengan menekan tombol 
+            <strong>Reset Kode</strong> dan menulis sendiri.
+          </p>
+          <div class="challenge-instruction">
+            💡 Tips: Mulailah dengan menulis <code>&lt;h1&gt;...&lt;/h1&gt;</code> dan lanjutkan dengan elemen lainnya.
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================
+           FOOTER ACTION
+           ============================================================ -->
+      <footer class="module-footer">
+        <button class="btn-complete" id="markComplete">✅ Tandai Selesai &amp; Lanjut</button>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- Toast container (tetap ada, meski tidak akan dipakai karena redirect) -->
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
