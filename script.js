@@ -368,6 +368,7 @@ const UI = {
     const inProg    = MODULES.filter(m => State.getStatus(m.id) === 'in_progress').length;
     const bm        = State.bookmarks.length;
     const pct       = total > 0 ? Math.round((completed / total) * 100) : 0;
+    const totalModul = total;
 
     // Header progress
     const fill  = document.getElementById('progress-fill');
@@ -440,11 +441,12 @@ const UI = {
       }
     }
   },
-
-  updateResultsCount(filtered) {
-    const num = document.getElementById('results-num');
-    if (num) num.textContent = filtered.length;
-  },
+    updateResultsCount(filtered) {
+      const shown = document.getElementById('results-shown');
+      const total = document.getElementById('results-total');
+      if (shown) shown.textContent = filtered.length;
+      if (total) total.textContent = MODULES.length; // total modul keseluruhan
+    }
 };
 
 /* ── 8. MAIN APP CONTROLLER ─────────────────────── */
