@@ -404,6 +404,34 @@ const UI = {
     const countBm = document.getElementById('count-bookmark');
     if (countBm) countBm.textContent = bm;
   },
+      // Category Updates
+  updateCategoryCounts() {
+    // Total modul
+    const total = MODULES.length;
+    const countAll = document.getElementById('count-all');
+    if (countAll) countAll.textContent = total;
+
+    // Hitung per kategori
+    const categories = ['HTML Dasar', 'CSS Styling', 'CSS Layout', 'Projek Interaktif'];
+    const idMap = {
+      'HTML Dasar': 'count-html',
+      'CSS Styling': 'count-css',
+      'CSS Layout': 'count-layout',
+      'Projek Interaktif': 'count-project'
+    };
+
+    categories.forEach(cat => {
+      const count = MODULES.filter(m => m.category === cat).length;
+      const el = document.getElementById(idMap[cat]);
+      if (el) el.textContent = count;
+    });
+
+    // Bookmark count
+    const bookmarkCount = State.bookmarks.length;
+    const countBookmark = document.getElementById('count-bookmark');
+    if (countBookmark) countBookmark.textContent = bookmarkCount;
+  },
+
 
   updateRoadmap() {
     for (let stage = 1; stage <= 4; stage++) {
@@ -460,6 +488,7 @@ const App = {
 
     this.bindEvents();
     this.refresh();
+    UI.updateCategoryCounts();
   },
 
   refresh() {
@@ -468,6 +497,7 @@ const App = {
     UI.updateProgress();
     UI.updateRoadmap();
     UI.updateResultsCount(filtered);
+    UI.updateCategoryCounts();
     this.bindCardEvents();
   },
 
