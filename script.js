@@ -474,6 +474,15 @@ const UI = {
       const total = document.getElementById('results-total');
       if (shown) shown.textContent = filtered.length;
       if (total) total.textContent = MODULES.length; // total modul keseluruhan
+    },
+    updateRoadmapTotals() {
+      // Hitung total modul per stage
+      const stages = [1, 2, 3, 4];
+      stages.forEach(stage => {
+        const total = MODULES.filter(m => m.stage === stage).length;
+        const totalEl = document.getElementById(`stage-${stage}-total`);
+        if (totalEl) totalEl.textContent = total;
+      });
     }
 };
 
@@ -489,6 +498,7 @@ const App = {
     this.bindEvents();
     this.refresh();
     UI.updateCategoryCounts();
+    UI.updateRoadmapTotals();
   },
 
   refresh() {
@@ -498,6 +508,7 @@ const App = {
     UI.updateRoadmap();
     UI.updateResultsCount(filtered);
     UI.updateCategoryCounts();
+    UI.updateRoadmapTotals();
     this.bindCardEvents();
   },
 
