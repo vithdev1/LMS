@@ -3,6 +3,10 @@
    Pure Vanilla JS | No dependencies
 ══════════════════════════════════════════════════ */
 
+
+
+
+
 'use strict';
 
 /* ── 1. MODULE DATA DEFINITIONS ─────────────────── */
@@ -240,18 +244,18 @@ const Renderer = {
     const bookmarkActive = isBookmark ? 'bookmarked' : '';
     const bookmarkAriaLabel = isBookmark ? 'Hapus dari favorit' : 'Tambahkan ke favorit';
 
-    const dropdownItems = [
-      { value: 'not_started', label: 'Belum Dibuka',     dot: 'var(--text-muted)' },
-      { value: 'in_progress', label: 'Sedang Dipelajari', dot: 'var(--accent-primary)' },
-      { value: 'completed',   label: 'Selesai',           dot: 'var(--accent-secondary)' },
-    ].map(opt => {
-      const isCurrent = status === opt.value ? 'current' : '';
-      return `<button class="dropdown-item ${isCurrent}" data-status="${opt.value}" role="menuitem">
-                <span class="dropdown-item-dot" style="background:${opt.dot}" aria-hidden="true"></span>
-                ${opt.label}
-                ${isCurrent ? '<span class="sr-only"> (status saat ini)</span>' : ''}
-              </button>`;
-    }).join('');
+    // const dropdownItems = [
+    //   { value: 'not_started', label: 'Belum Dibuka',     dot: 'var(--text-muted)' },
+    //   { value: 'in_progress', label: 'Sedang Dipelajari', dot: 'var(--accent-primary)' },
+    //   { value: 'completed',   label: 'Selesai',           dot: 'var(--accent-secondary)' },
+    // ].map(opt => {
+    //   const isCurrent = status === opt.value ? 'current' : '';
+    //   return `<button class="dropdown-item ${isCurrent}" data-status="${opt.value}" role="menuitem">
+    //             <span class="dropdown-item-dot" style="background:${opt.dot}" aria-hidden="true"></span>
+    //             ${opt.label}
+    //             ${isCurrent ? '<span class="sr-only"> (status saat ini)</span>' : ''}
+    //           </button>`;
+    // }).join('');
 
     const li = document.createElement('article');
     li.className  = `module-card status-${status}`;
@@ -290,18 +294,6 @@ const Renderer = {
         <span class="badge-status">${statusLabel}</span>
         ${actionBtn}
         <div class="status-dropdown-wrapper">
-          <button
-            class="btn-status-toggle"
-            data-module-id="${module.id}"
-            aria-haspopup="true"
-            aria-expanded="false"
-            aria-label="Ubah status modul ${module.title}"
-            title="Ubah Status"
-          >⋮</button>
-          <div class="status-dropdown-menu" role="menu" aria-label="Pilih status modul">
-            <div class="dropdown-label">Ubah Status</div>
-            ${dropdownItems}
-          </div>
         </div>
       </div>
     `;
@@ -632,22 +624,22 @@ const App = {
       }
 
       // Status dropdown toggle
-      const toggleBtn = e.target.closest('.btn-status-toggle');
-      if (toggleBtn) {
-        e.stopPropagation();
-        const wrapper  = toggleBtn.closest('.status-dropdown-wrapper');
-        const menu     = wrapper.querySelector('.status-dropdown-menu');
-        const isOpen   = menu.classList.contains('open');
+      // const toggleBtn = e.target.closest('.btn-status-toggle');
+      // if (toggleBtn) {
+      //   e.stopPropagation();
+      //   const wrapper  = toggleBtn.closest('.status-dropdown-wrapper');
+      //   const menu     = wrapper.querySelector('.status-dropdown-menu');
+      //   const isOpen   = menu.classList.contains('open');
 
-        this.closeAllDropdowns();
+      //   this.closeAllDropdowns();
 
-        if (!isOpen) {
-          menu.classList.add('open');
-          toggleBtn.setAttribute('aria-expanded', 'true');
-          this.activeDropdown = { menu, toggleBtn };
-        }
-        return;
-      }
+      //   if (!isOpen) {
+      //     menu.classList.add('open');
+      //     toggleBtn.setAttribute('aria-expanded', 'true');
+      //     this.activeDropdown = { menu, toggleBtn };
+      //   }
+      //   return;
+      // }
 
       // Dropdown items
       const dropItem = e.target.closest('.dropdown-item[data-status]');
