@@ -119,7 +119,6 @@
   --sidebar-width: 260px;
   --header-height: 64px;
 }
-
 /* ── Reset & Base ─────────────────────────────────────────── */
 *, *::before, *::after {
   box-sizing: border-box;
