@@ -21,7 +21,7 @@ const MODULES = [
     stage: 1,
     duration: 45,
     path: 'modules/01-pengenalan-html/index.html',
-  }
+  },
 ];
 
 /* ── 2. STORAGE KEYS ────────────────────────────── */
@@ -436,23 +436,25 @@ const UI = {
       const count = document.getElementById(`stage-${stage}-done`);
       const el    = document.getElementById(`stage-${stage}`);
 
+      const prevModules = MODULES.filter(m => m.stage === stage - 1);
+      const prevDone = stage === 1 
+      ? true 
+      : (prevModules.length > 0 && prevModules.every(m => State.getStatus(m.id) === 'completed'));
+
       if (fill)  fill.style.width  = `${pct}%`;
       if (count) count.textContent = done;
-
       if (el) {
-        el.classList.remove('completed', 'active', 'locked');
-        const prevDone = stage === 1 ? true :
-          MODULES.filter(m => m.stage === stage - 1)
-                 .every(m => State.getStatus(m.id) === 'completed');
+        el.classList.remove('completed', 'active', 'locked', 'empty');
 
         if (done === total && total > 0) {
           el.classList.add('completed');
-        } else if (prevDone && done < total) {
+        } else if (prevDone && done < total && total > 0) {
           el.classList.add('active');
-        } else if (!prevDone) {
+        } else if (!prevDone && total > 0) {
           el.classList.add('locked');
         } else {
-          el.classList.add('active');
+          el.classList.add('empty');
+          // el.style.display = 'none'; // opsional jika ingin disembunyikan total
         }
 
         // Update progressbar ARIA
