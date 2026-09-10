@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Modul 1: Pengenalan HTML & Struktur Dokumen — VITH Education" />
-  <title>Modul 01 · Pengenalan HTML · VITH Education</title>
+  <meta name="description" content="Modul 1: Pengenalan HTML & Setup Environment — VITH Education" />
+  <title>Modul 01 · Pengenalan HTML & Setup · VITH Education</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -27,8 +27,8 @@
     </a>
     <div class="nav-info">
       <span class="badge">HTML Dasar</span>
-      <span class="difficulty">⚡ Beginner</span>
-      <span class="time">⏱ <span>45 Menit</span></span>
+      <span class="difficulty">⚡ Pemula</span>
+      <span class="time">⏱ <span>60 Menit</span></span>
     </div>
   </header>
 
@@ -53,9 +53,11 @@
         <div class="toc-title">Daftar Isi</div>
         <ul class="toc-list" id="tocList">
           <li><a href="#pendahuluan" data-target="pendahuluan">📖 Pendahuluan & Tujuan</a></li>
-          <li><a href="#konsep" data-target="konsep">🧠 Penjelasan Konsep</a></li>
-          <li><a href="#codeblock" data-target="codeblock">💻 Code Block</a></li>
-          <li><a href="#callout" data-target="callout">📌 Tips & Aksesibilitas</a></li>
+          <li><a href="#apa-itu-html" data-target="apa-itu-html">🧠 Apa itu HTML?</a></li>
+          <li><a href="#setup" data-target="setup">⚙️ Setup Environment</a></li>
+          <li><a href="#struktur-dasar" data-target="struktur-dasar">🏗️ Struktur Dasar HTML</a></li>
+          <li><a href="#meta-tags" data-target="meta-tags">🏷️ Meta Tags Penting</a></li>
+          <li><a href="#tips" data-target="tips">📌 Tips & Aksesibilitas</a></li>
           <li><a href="#livepreview" data-target="livepreview">🔍 Live Preview</a></li>
           <li><a href="#challenge" data-target="challenge">🏆 Mini Challenge</a></li>
         </ul>
@@ -69,36 +71,221 @@
       <section class="section-block" id="pendahuluan">
         <h2><span class="emoji">📖</span> Pendahuluan &amp; Tujuan Pembelajaran</h2>
         <p>
-          Selamat datang di modul pertama! Di sini Anda akan mempelajari fondasi dari setiap halaman web: 
-          <strong>HTML</strong> (HyperText Markup Language). Kami akan membahas apa itu HTML, bagaimana 
-          struktur dokumen HTML, dan elemen-elemen dasar yang sering digunakan.
+          Selamat datang di modul pertama! Anda akan memulai perjalanan belajar web development dengan 
+          mempelajari <strong>HTML</strong> (HyperText Markup Language), fondasi dari setiap halaman web 
+          yang Anda lihat di internet.
         </p>
-        <p><strong>Tujuan pembelajaran:</strong></p>
+        <p>
+          Di modul ini, kita akan memahami peran HTML dalam ekosistem web, cara setup environment coding, 
+          dan struktur dasar dokumen HTML yang akan Anda gunakan untuk setiap proyek.
+        </p>
+
+        <h3>🎯 Tujuan Pembelajaran</h3>
         <ul>
-          <li>Memahami peran HTML dalam pengembangan web.</li>
-          <li>Mengenal struktur dasar dokumen HTML.</li>
-          <li>Mampu menulis elemen HTML dasar (heading, paragraf, tautan, gambar, daftar).</li>
-          <li>Mengerti pentingnya elemen semantik untuk aksesibilitas dan SEO.</li>
+          <li>Memahami apa itu HTML dan perannya dalam pengembangan web</li>
+          <li>Membedakan HTML, CSS, dan JavaScript serta fungsi masing-masing</li>
+          <li>Setup text editor dan tools yang diperlukan untuk coding</li>
+          <li>Membuat dan menjalankan file HTML pertama</li>
+          <li>Mengerti struktur dokumen HTML yang valid dan semantik</li>
+          <li>Memahami meta tags penting untuk aksesibilitas dan responsivitas</li>
+          <li>Mengenal pentingnya elemen semantik untuk accessibility dan SEO</li>
         </ul>
+
+        <div class="callout">
+          <span class="icon">💡</span>
+          <div class="content">
+            <strong>Catatan:</strong> Modul ini dirancang untuk pemula tanpa pengalaman coding sebelumnya. 
+            Jangan khawatir jika konsep terasa baru — kami akan menjelaskan semuanya dengan detail dan contoh praktis.
+          </div>
+        </div>
       </section>
 
-      <!-- ========== 2. PENJELASAN KONSEP ========== -->
-      <section class="section-block" id="konsep">
-        <h2><span class="emoji">🧠</span> Penjelasan Konsep</h2>
+      <!-- ========== 2. APA ITU HTML ========== -->
+      <section class="section-block" id="apa-itu-html">
+        <h2><span class="emoji">🧠</span> Apa itu HTML?</h2>
 
-        <h3>Apa itu HTML?</h3>
+        <h3>Definisi HTML</h3>
         <p>
-          <strong>HTML</strong> (HyperText Markup Language) adalah bahasa markup standar yang digunakan 
-          untuk membuat dan menyusun halaman web. HTML memberikan struktur dasar pada konten yang Anda 
-          lihat di browser, seperti teks, gambar, tautan, formulir, dan lainnya.
+          <strong>HTML</strong> adalah singkatan dari <strong>HyperText Markup Language</strong>. Mari kita 
+          pecah definisi ini:
         </p>
+        <ul>
+          <li><strong>HyperText:</strong> Teks yang dapat berisi link (tautan) ke dokumen lain</li>
+          <li><strong>Markup:</strong> Sistem penandaan konten menggunakan tag/elemen</li>
+          <li><strong>Language:</strong> Bahasa yang memiliki aturan dan sintaks tertentu</li>
+        </ul>
+
         <p>
-          HTML bekerja bersama dengan CSS (untuk tampilan) dan JavaScript (untuk interaktivitas) untuk 
-          membangun pengalaman web yang lengkap.
+          Dengan kata lain, <strong>HTML adalah bahasa untuk membuat struktur konten web</strong>. HTML 
+          memberikan makna dan organisasi pada teks, gambar, link, dan elemen-elemen lain yang Anda lihat 
+          di halaman web.
         </p>
 
-        <h3>Struktur Dasar Dokumen HTML</h3>
-        <p>Setiap dokumen HTML memiliki kerangka wajib seperti di bawah ini:</p>
+        <h3>HTML dalam Ekosistem Web</h3>
+        <p>Web modern dibangun dengan kombinasi tiga teknologi utama yang bekerja bersama:</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>📊 Hubungan HTML, CSS, dan JavaScript</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>HTML = Struktur & Konten (skeleton / kerangka)
+CSS  = Tampilan & Styling (pakaian / dekorasi)
+JS   = Interaksi & Logika (gerakan / tingkah laku)
+
+Analogi: Membangun Rumah
+─────────────────────────────
+HTML = Kerangka rumah, dinding, pintu, jendela
+CSS  = Cat tembok, wallpaper, furniture, dekorasi
+JS   = Lampu yang menyala/mati, pintu otomatis, AC</code></pre>
+        </div>
+
+        <h3>Kenapa HTML Penting?</h3>
+        <ul>
+          <li><strong>Struktur Semantik:</strong> Memberikan makna pada konten (judul, paragraf, list, dll)</li>
+          <li><strong>Aksesibilitas:</strong> Membantu screen reader untuk pengguna dengan keterbatasan visual</li>
+          <li><strong>SEO (Search Engine Optimization):</strong> Mesin pencari memahami konten lebih baik</li>
+          <li><strong>Responsivitas Mobile:</strong> HTML yang benar mendukung desain responsive</li>
+          <li><strong>Performa Web:</strong> HTML yang clean membuat halaman lebih cepat</li>
+          <li><strong>Maintenance:</strong> Kode yang terstruktur mudah diperbaiki dan dikembangkan</li>
+        </ul>
+
+        <div class="callout" style="border-left-color: var(--accent-secondary); background: rgba(78, 201, 176, 0.06);">
+          <span class="icon">✅</span>
+          <div class="content">
+            <strong>Kami menggunakan HTML5.</strong> Semua browser modern mendukung HTML5 sepenuhnya. 
+            Ketika mengatakan "HTML" di kursus ini, kami berarti HTML5 (standar terbaru sejak 2014).
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 3. SETUP ENVIRONMENT ========== -->
+      <section class="section-block" id="setup">
+        <h2><span class="emoji">⚙️</span> Setup Environment</h2>
+
+        <h3>Apa yang Anda Butuhkan?</h3>
+        <p>
+          Untuk memulai coding HTML, Anda hanya perlu: <strong>Text Editor</strong> dan <strong>Web Browser</strong>. 
+          Keduanya gratis dan mudah diinstall.
+        </p>
+
+        <h3>1. Text Editor (IDE)</h3>
+        <p>Text editor adalah tempat Anda menulis kode. Berikut rekomendasi untuk pemula:</p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>💻 Rekomendasi Text Editor</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>🥇 VS Code (REKOMENDASI UTAMA)
+   ├─ Developer: Microsoft
+   ├─ Size: ~80MB (ringan)
+   ├─ Keunggulan: User-friendly, banyak extension, live preview
+   ├─ Download: https://code.visualstudio.com
+   └─ Platform: Windows, Mac, Linux
+
+🥈 Sublime Text
+   ├─ Sangat ringan dan cepat
+   ├─ Download: https://www.sublimetext.com
+   └─ Gratis dengan opsi donasi
+
+🥉 Notepad++
+   ├─ Ultraringan (~3MB)
+   ├─ Download: https://notepad-plus-plus.org
+   └─ Windows only
+
+📝 Online IDE (tanpa install)
+   ├─ Replit: https://replit.com
+   ├─ CodePen: https://codepen.io
+   └─ Ideal untuk belajar awal        </div>
+
+        <h4>Cara Install VS Code</h4>
+        <ol>
+          <li>Buka https://code.visualstudio.com di browser</li>
+          <li>Klik <strong>Download</strong> sesuai OS (Windows/Mac/Linux)</li>
+          <li>Jalankan installer dan ikuti langkah-langkah (default settings OK)</li>
+          <li>Buka VS Code — selesai! Siap coding</li>
+        </ol>
+
+        <h4>Extension Penting untuk VS Code</h4>
+        <div class="code-block">
+          <div class="code-header">
+            <span>🧩 VS Code Extensions</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>1. Live Server
+   Fungsi: Preview HTML dengan auto-refresh saat save
+   Cara: Klik kanan file → "Open with Live Server"
+   Developer: Ritwick Dey
+
+2. HTML CSS Support
+   Fungsi: Autocomplete & IntelliSense untuk tag HTML
+   Developer: ecmel
+
+3. Prettier - Code Formatter
+   Fungsi: Otomatis format kode agar rapi
+   Shortcut: Alt+Shift+F
+
+4. Material Theme / One Dark Pro
+   Fungsi: Theme warna yang nyaman untuk mata        </div>
+
+        <h3>2. Web Browser (untuk Preview)</h3>
+        <p>
+          Anda sudah memiliki browser di komputer (Chrome, Firefox, Safari, Edge). Browser digunakan untuk 
+          melihat hasil kode HTML Anda. Rekomendasi untuk developer:
+        </p>
+
+        <div class="code-block">
+          <div class="code-header">
+            <span>🌐 Browser untuk Developer</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>Google Chrome (REKOMENDASI)
+├─ DevTools yang lengkap
+├─ Performa rendering bagus
+└─ Jauh lebih cepat di kebanyakan situs
+
+Mozilla Firefox
+├─ DevTools yang powerful & user-friendly
+├─ Privacy-focused
+└─ Great untuk web development
+
+Microsoft Edge (Chromium-based)
+├─ Built-in pada Windows 11
+├─ DevTools serupa dengan Chrome
+└─ Integration dengan Visual Studio        </div>
+
+        <h3>3. Membuat File HTML Pertama</h3>
+        <p>Ikuti langkah-langkah ini untuk membuat file HTML pertama:</p>
+
+        <ol>
+          <li><strong>Buka VS Code</strong> dan buat folder baru bernama <code>my-website</code></li>
+          <li><strong>File → New File</strong>, ketik nama <code>index.html</code></li>
+          <li><strong>Ketik kode HTML</strong> (lihat bagian struktur dasar di bawah)</li>
+          <li><strong>Simpan file</strong> (Ctrl+S / Cmd+S)</li>
+          <li><strong>Klik kanan file → "Open with Live Server"</strong></li>
+          <li>Browser akan terbuka otomatis menampilkan halaman HTML Anda</li>
+        </ol>
+
+        <div class="callout" style="border-left-color: var(--accent-gold); background: rgba(255, 213, 79, 0.06);">
+          <span class="icon">⚠️</span>
+          <div class="content">
+            <strong>Perhatian:</strong> Pastikan file disimpan dengan ekstensi <code>.html</code>, 
+            bukan <code>.txt</code> atau format lain. Browser hanya mengenal file dengan ekstensi HTML.
+          </div>
+        </div>
+      </section>
+
+      <!-- ========== 4. STRUKTUR DASAR HTML ========== -->
+      <section class="section-block" id="struktur-dasar">
+        <h2><span class="emoji">🏗️</span> Struktur Dasar Dokumen HTML</h2>
+
+        <h3>Template HTML Minimal</h3>
+        <p>
+          Setiap dokumen HTML harus memiliki struktur dasar yang disebut "skeleton" atau "boilerplate". 
+          Berikut adalah struktur minimal yang valid:
+        </p>
+
         <div class="code-block">
           <div class="code-header">
             <span>📄 HTML</span>
@@ -107,76 +294,161 @@
           <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="id"&gt;
   &lt;head&gt;
-    &lt;meta charset="UTF-8" /&gt;
-    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0" /&gt;
-    &lt;title&gt;Judul Halaman&lt;/title&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;Judul Halaman Saya&lt;/title&gt;
   &lt;/head&gt;
   &lt;body&gt;
-    &lt;!-- Konten utama ditulis di sini --&gt;
+    &lt;h1&gt;Halo, Dunia!&lt;/h1&gt;
+    &lt;p&gt;Ini adalah halaman HTML pertama saya.&lt;/p&gt;
   &lt;/body&gt;
 &lt;/html&gt;</code></pre>
         </div>
-        <ul>
-          <li><code>&lt;!DOCTYPE html&gt;</code> — deklarasi tipe dokumen (HTML5).</li>
-          <li><code>&lt;html&gt;</code> — elemen akar, mencakup seluruh halaman.</li>
-          <li><code>&lt;head&gt;</code> — berisi informasi meta, judul, dan tautan ke CSS/JS.</li>
-          <li><code>&lt;body&gt;</code> — tempat semua konten yang terlihat oleh pengguna.</li>
-        </ul>
 
-        <h3>Elemen Dasar HTML</h3>
-        <p><strong>Heading</strong> — gunakan <code>&lt;h1&gt;</code> sampai <code>&lt;h6&gt;</code>.</p>
-        <div class="code-block">
-          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
-          <pre><code>&lt;h1&gt;Judul Utama&lt;/h1&gt;
-&lt;h2&gt;Subjudul&lt;/h2&gt;
-&lt;h3&gt;Bagian lebih kecil&lt;/h3&gt;</code></pre>
-        </div>
+        <h3>Penjelasan Setiap Bagian</h3>
 
-        <p><strong>Paragraf</strong> — gunakan <code>&lt;p&gt;</code>.</p>
-        <div class="code-block">
-          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
-          <pre><code>&lt;p&gt;Ini adalah sebuah paragraf.&lt;/p&gt;</code></pre>
-        </div>
-
-        <p><strong>Tautan</strong> — gunakan <code>&lt;a href="url"&gt;</code>.</p>
-        <div class="code-block">
-          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
-          <pre><code>&lt;a href="https://example.com"&gt;Kunjungi situs contoh&lt;/a&gt;</code></pre>
-        </div>
-
-        <p><strong>Gambar</strong> — gunakan <code>&lt;img src="gambar.jpg" alt="deskripsi" /&gt;</code>.</p>
-        <div class="code-block">
-          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
-          <pre><code>&lt;img src="logo.png" alt="Logo VITH Education" width="200" /&gt;</code></pre>
-        </div>
-
-        <p><strong>Daftar</strong> — tak berurutan (<code>&lt;ul&gt;</code>) dan berurutan (<code>&lt;ol&gt;</code>).</p>
-        <div class="code-block">
-          <div class="code-header"><span>📄 HTML</span><button class="copy-btn">📋 Copy</button></div>
-          <pre><code>&lt;ul&gt;
-  &lt;li&gt;Item pertama&lt;/li&gt;
-  &lt;li&gt;Item kedua&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Langkah 1&lt;/li&gt;
-  &lt;li&gt;Langkah 2&lt;/li&gt;
-&lt;/ol&gt;</code></pre>
-        </div>
-
-        <h3>Elemen Semantik</h3>
+        <h4>&lt;!DOCTYPE html&gt; — Deklarasi Tipe Dokumen</h4>
         <p>
-          Elemen semantik memberikan makna pada struktur, membantu mesin pencari dan pembaca layar 
-          memahami konten. Contoh: <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>, 
-          <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;article&gt;</code>, 
-          <code>&lt;footer&gt;</code>. Modul berikutnya akan membahasnya lebih dalam.
+          Baris pertama yang WAJIB ada di setiap file HTML. Ini memberitahu browser bahwa file ini adalah 
+          dokumen HTML5. DOCTYPE hanya perlu ditulis sekali di awal file.
         </p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+        </div>
+
+        <h4>&lt;html&gt; — Elemen Root</h4>
+        <p>
+          Elemen <code>&lt;html&gt;</code> adalah kontainer induk yang mencakup seluruh dokumen. Atribut 
+          <code>lang="id"</code> memberitahu browser bahwa konten dalam bahasa Indonesia (baik untuk accessibility dan SEO).
+        </p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;html lang="id"&gt;
+  &lt;!-- Seluruh konten halaman berada di sini --&gt;
+&lt;/html&gt;
+
+&lt;!-- Pilihan bahasa lain: --&gt;
+lang="en"   &lt;!-- English --&gt;
+lang="es"   &lt;!-- Spanish --&gt;
+lang="fr"   &lt;!-- French --&gt;
+lang="de"   &lt;!-- German --&gt;
+lang="ja"   &lt;!-- Japanese --&gt;        </div>
+
+        <h4>&lt;head&gt; — Informasi Dokumen</h4>
+        <p>
+          Bagian <code>&lt;head&gt;</code> berisi informasi <strong>tentang</strong> halaman, bukan konten 
+          yang terlihat. Di sini kita definisikan metadata, judul halaman, link ke CSS, dll.
+        </p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Judul yang Muncul di Tab Browser&lt;/title&gt;
+  &lt;meta name="description" content="Deskripsi halaman untuk SEO"&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/head&gt;        </div>
+
+        <h4>&lt;body&gt; — Konten yang Terlihat</h4>
+        <p>
+          Bagian <code>&lt;body&gt;</code> berisi semua konten yang <strong>terlihat</strong> di browser: 
+          teks, gambar, link, tombol, form, dll. Ini adalah bagian utama yang akan Anda lihat ketika membuka website.
+        </p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;body&gt;
+  &lt;h1&gt;Judul Halaman&lt;/h1&gt;
+  &lt;p&gt;Paragraf pertama.&lt;/p&gt;
+  &lt;p&gt;Paragraf kedua.&lt;/p&gt;
+  &lt;img src="gambar.jpg" alt="Deskripsi gambar"&gt;
+  &lt;a href="https://example.com"&gt;Link ke website lain&lt;/a&gt;
+&lt;/body&gt;        </div>
       </section>
 
-      <!-- ========== 3. CODE BLOCK ========== -->
-      <section class="section-block" id="codeblock">
-        <h2><span class="emoji">💻</span> Code Block / IDE Snippet</h2>
-        <p>Berikut adalah contoh kode HTML lengkap dengan struktur dan elemen dasar:</p>
+      <!-- ========== 5. META TAGS PENTING ========== -->
+      <section class="section-block" id="meta-tags">
+        <h2><span class="emoji">🏷️</span> Meta Tags Penting</h2>
+
+        <p>
+          Meta tags adalah informasi khusus di dalam <code>&lt;head&gt;</code> yang memberitahu browser 
+          dan mesin pencari tentang halaman. Berikut meta tags yang paling penting untuk pemula:
+        </p>
+
+        <h3>1. Meta Charset — Encoding Karakter</h3>
+        <p>
+          Menentukan encoding karakter file. <strong>Selalu gunakan UTF-8</strong> untuk mendukung 
+          semua bahasa (Indonesia, Emoji, Arab, Chinese, dll).
+        </p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;meta charset="UTF-8"&gt;        </div>
+
+        <h3>2. Meta Viewport — Responsivitas Mobile</h3>
+        <p>
+          SANGAT PENTING untuk mobile devices. Tanpa ini, halaman akan terlihat kecil dan tidak responsif 
+          di smartphone.
+        </p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+
+Penjelasan:
+├─ width=device-width → Lebar halaman = lebar device
+└─ initial-scale=1.0 → Zoom awal 100%        </div>
+
+        <h3>3. Meta Description — Deskripsi untuk SEO</h3>
+        <p>
+          Deskripsi singkat (max 160 karakter) yang muncul di hasil pencarian Google. Penting untuk SEO 
+          dan user experience.
+        </p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;meta name="description" content="Belajar HTML dari nol dengan tutorial interaktif dan live preview"&gt;        </div>
+
+        <h3>4. Meta Keywords — Keyword untuk Mesin Pencari</h3>
+        <p>
+          Keyword yang relevan dengan halaman. Tidak sekritis dulu, namun masih berguna untuk SEO.
+        </p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;meta name="keywords" content="HTML, web development, tutorial coding"&gt;        </div>
+
+        <h3>5. Meta Author — Penulis Halaman</h3>
+        <p>Informasi tentang siapa yang membuat halaman ini.</p>
+        <div class="code-block">
+          <div class="code-header">
+            <span>📄 HTML</span>
+            <button class="copy-btn">📋 Copy</button>
+          </div>
+          <pre><code>&lt;meta name="author" content="Nama Anda"&gt;        </div>
+
+        <h3>Contoh Lengkap: Head Section yang Profesional</h3>
         <div class="code-block">
           <div class="code-header">
             <span>📄 HTML</span>
@@ -185,51 +457,88 @@
           <pre><code>&lt;!DOCTYPE html&gt;
 &lt;html lang="id"&gt;
 &lt;head&gt;
+  &lt;!-- Encoding & Viewport (WAJIB) --&gt;
   &lt;meta charset="UTF-8"&gt;
   &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
-  &lt;title&gt;Halaman Pertama Saya&lt;/title&gt;
+
+  &lt;!-- Judul Halaman --&gt;
+  &lt;title&gt;Belajar HTML - VITH Education&lt;/title&gt;
+
+  &lt;!-- SEO Metadata --&gt;
+  &lt;meta name="description" content="Pelajari HTML dari nol dengan tutorial interaktif"&gt;
+  &lt;meta name="keywords" content="HTML, web development, tutorial"&gt;
+  &lt;meta name="author" content="Nama Anda"&gt;
+
+  &lt;!-- CSS Link --&gt;
+  &lt;link rel="stylesheet" href="style.css"&gt;
 &lt;/head&gt;
 &lt;body&gt;
-  &lt;h1&gt;Selamat Datang!&lt;/h1&gt;
-  &lt;p&gt;Ini adalah halaman web pertama saya. Saya belajar HTML.&lt;/p&gt;
-  &lt;a href="https://example.com"&gt;Kunjungi contoh&lt;/a&gt;
-  &lt;img src="https://via.placeholder.com/150" alt="Placeholder" /&gt;
-  &lt;ul&gt;
-    &lt;li&gt;Poin 1&lt;/li&gt;
-    &lt;li&gt;Poin 2&lt;/li&gt;
-  &lt;/ul&gt;
+  &lt;!-- Konten halaman --&gt;
 &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-        </div>
+&lt;/html&gt;        </div>
       </section>
 
-      <!-- ========== 4. CALLOUT / TIPS ========== -->
-      <section class="section-block" id="callout">
+      <!-- ========== 6. TIPS & AKSESIBILITAS ========== -->
+      <section class="section-block" id="tips">
         <h2><span class="emoji">📌</span> Tips &amp; Aksesibilitas</h2>
+
         <div class="callout">
           <span class="icon">💡</span>
           <div class="content">
-            <strong>Tips Developer:</strong> Selalu gunakan atribut <code>alt</code> pada gambar untuk 
-            memberikan deskripsi teks alternatif. Ini penting bagi pengguna dengan pembaca layar dan 
-            juga membantu SEO.
+            <strong>Tip 1: Selalu mulai dengan skeleton.</strong> Jangan mulai coding langsung. 
+            Salin template minimal di atas terlebih dahulu, baru tambahkan konten. Ini menghemat waktu dan 
+            menghindari kesalahan.
           </div>
         </div>
+
+        <div class="callout">
+          <span class="icon">💡</span>
+          <div class="content">
+            <strong>Tip 2: Gunakan Live Server untuk development.</strong> Extension Live Server di VS Code 
+            membuat browser auto-refresh setiap Anda save file. Ini jauh lebih efisien daripada 
+            manual refresh.
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="icon">💡</span>
+          <div class="content">
+            <strong>Tip 3: Perhatikan indentasi (indentation).</strong> Indentasi membuat kode lebih readable. 
+            Gunakan 2 atau 4 spasi untuk setiap level nesting. VS Code bisa auto-indent dengan Shift+Alt+F.
+          </div>
+        </div>
+
+        <div class="callout">
+          <span class="icon">💡</span>
+          <div class="content">
+            <strong>Tip 4: Gunakan semantic HTML.</strong> Alih-alih generik (seperti div), gunakan tag 
+            semantic seperti header, nav, main, footer. Ini membantu aksesibilitas dan SEO.
+          </div>
+        </div>
+
         <div class="callout" style="border-left-color: var(--accent-gold); background: rgba(255, 213, 79, 0.06);">
           <span class="icon">⚠️</span>
           <div class="content">
-            <strong>Peringatan:</strong> Pastikan struktur heading (<code>&lt;h1&gt;</code> – 
-            <code>&lt;h6&gt;</code>) berurutan dan tidak melompat. Gunakan <code>&lt;h1&gt;</code> 
-            hanya sekali per halaman untuk judul utama.
+            <strong>Aksesibilitas:</strong> Meta viewport penting untuk pengguna mobile dan untuk accessibility. 
+            Selalu include <code>&lt;meta name="viewport"...&gt;</code> untuk responsive design.
+          </div>
+        </div>
+
+        <div class="callout" style="border-left-color: var(--accent-secondary); background: rgba(78, 201, 176, 0.06);">
+          <span class="icon">✅</span>
+          <div class="content">
+            <strong>SEO Benefit:</strong> Meta tags (description, keywords, author) membantu mesin pencari 
+            memahami halaman Anda. Google menggunakan data ini untuk ranking dan tampilan di search results.
           </div>
         </div>
       </section>
 
-      <!-- ========== 5. LIVE PREVIEW ========== -->
+      <!-- ========== 7. LIVE PREVIEW ========== -->
       <section class="section-block" id="livepreview">
-        <h2><span class="emoji">🔍</span> Live Preview Panel</h2>
+        <h2><span class="emoji">🔍</span> Live Preview &amp; Code Editor</h2>
         <p>
-          Coba tulis kode HTML di bawah ini. Hasilnya akan langsung terlihat di panel preview secara 
-          <strong>real-time</strong> (atau dengan tombol Jalankan jika auto-refresh dimatikan).
+          Coba tulis atau edit kode HTML di editor di bawah. Hasil preview akan muncul secara real-time 
+          di panel preview sebelah kanan (atau bawah jika layar kecil).
         </p>
 
         <div class="live-editor">
@@ -247,42 +556,88 @@
             </div>
           </div>
           <div class="editor-body">
-            <textarea id="liveEditor" spellcheck="false" aria-label="Editor HTML live" rows="10">&lt;h1&gt;Halo, Dunia!&lt;/h1&gt;
-&lt;p&gt;Ini adalah paragraf pertama saya.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Belajar HTML itu menyenangkan&lt;/li&gt;
-  &lt;li&gt;Coba ubah kode ini!&lt;/li&gt;
-&lt;/ul&gt;</textarea>
+            <textarea id="liveEditor" spellcheck="false" aria-label="Editor HTML live" rows="15">&lt;!DOCTYPE html&gt;
+&lt;html lang="id"&gt;
+&lt;head&gt;
+  &lt;meta charset="UTF-8"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+  &lt;title&gt;Halaman Pertama Saya&lt;/title&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;h1&gt;Selamat Datang!&lt;/h1&gt;
+  &lt;p&gt;Ini adalah website HTML pertama saya. Saya sedang belajar web development!&lt;/p&gt;
+  &lt;p&gt;Coba ubah kode di editor ini dan lihat hasilnya berubah di preview.&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;HTML = Struktur&lt;/li&gt;
+    &lt;li&gt;CSS = Styling&lt;/li&gt;
+    &lt;li&gt;JavaScript = Interaksi&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/body&gt;
+&lt;/html&gt;</textarea>
             <div class="preview-panel" id="previewPanel">
               <div class="placeholder" id="placeholderPreview">▶ Hasil kode akan muncul di sini</div>
               <iframe id="previewIframe" sandbox="allow-scripts allow-modals allow-same-origin" loading="lazy" style="display:none;"></iframe>
             </div>
           </div>
         </div>
+
+        <div class="callout">
+          <span class="icon">💡</span>
+          <div class="content">
+            Cobalah mengedit kode: ubah "Selamat Datang!" menjadi nama Anda, atau tambahkan elemen baru. 
+            Perubahan akan langsung terlihat di preview!
+          </div>
+        </div>
       </section>
 
-      <!-- ========== 6. MINI CHALLENGE ========== -->
+      <!-- ========== 8. MINI CHALLENGE ========== -->
       <section class="section-block" id="challenge">
         <h2><span class="emoji">🏆</span> Mini Challenge</h2>
+
         <div class="challenge-box">
           <h3>📝 Tugas Anda</h3>
           <p>
-            Buatlah sebuah halaman HTML sederhana yang berisi:
+            Menggunakan editor Live Preview di atas, buatlah halaman HTML dengan struktur lengkap yang berisi:
           </p>
           <ul>
-            <li>Sebuah <strong>judul utama</strong> (<code>&lt;h1&gt;</code>) dengan teks bebas.</li>
-            <li>Dua paragraf (<code>&lt;p&gt;</code>) yang menceritakan sesuatu tentang diri Anda.</li>
-            <li>Sebuah <strong>tautan</strong> ke situs favorit Anda.</li>
-            <li>Sebuah <strong>daftar tak berurutan</strong> dengan 3 hobi Anda.</li>
+            <li><strong>Sebuah judul utama</strong> (<code>&lt;h1&gt;</code>) dengan nama Anda</li>
+            <li><strong>Dua paragraf</strong> (<code>&lt;p&gt;</code>) berisi:
+              <ul>
+                <li>Paragraf 1: Tentang diri Anda (minimal 2 kalimat)</li>
+                <li>Paragraf 2: Alasan Anda belajar web development</li>
+              </ul>
+            </li>
+            <li><strong>Sebuah daftar (list)</strong> dengan 3-5 hobi atau keahlian Anda</li>
+            <li><strong>Sebuah link</strong> ke website favorit Anda</li>
+            <li><strong>Meta tags yang lengkap</strong> di head section (charset, viewport, title, description)</li>
           </ul>
-          <p>
-            Gunakan <strong>editor Live Preview</strong> di atas untuk menulis kode Anda. 
-            Anda bisa mengedit kode yang sudah ada atau mulai dari awal dengan menekan tombol 
-            <strong>Reset</strong> dan menulis sendiri.
-          </p>
+
           <div class="challenge-instruction">
-            💡 Tips: Mulailah dengan menulis <code>&lt;h1&gt;...&lt;/h1&gt;</code> dan lanjutkan dengan elemen lainnya.
+            💡 <strong>Panduan:</strong>
+            <ol>
+              <li>Mulai dengan skeleton template yang sudah ada di editor</li>
+              <li>Ganti placeholder text dengan konten Anda sendiri</li>
+              <li>Periksa hasil preview di sisi kanan editor</li>
+              <li>Jika ada error, baca pesan error dengan teliti</li>
+              <li>Gunakan tombol "Reset" jika ingin mulai dari awal</li>
+            </ol>
           </div>
+        </div>
+
+        <div class="challenge-box" style="background: rgba(78, 201, 176, 0.08); border-left-color: var(--accent-secondary);">
+          <h3>🎯 Kriteria Sukses</h3>
+          <ul>
+            <li>✓ Kode valid tanpa error di console</li>
+            <li>✓ Semua tag HTML ditutup dengan benar</li>
+            <li>✓ Meta viewport dan charset ada di head</li>
+            <li>✓ Minimal 3 paragraf atau list items</li>
+            <li>✓ Setidaknya 1 link yang mengarah ke halaman eksternal</li>
+            <li>✓ Indentasi yang rapi dan konsisten</li>
+          </ul>
+        </div>
+
+        <div class="challenge-instruction">
+          ⏰ <strong>Waktu:</strong> 15-20 menit. Jangan terburu-buru, fokus pada struktur yang benar!
         </div>
       </section>
 
@@ -296,7 +651,7 @@
     </main>
   </div>
 
-  <!-- Toast container (tetap ada untuk fallback) -->
+  <!-- Toast container -->
   <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
 
   <script src="script.js"></script>
