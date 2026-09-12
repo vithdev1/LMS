@@ -24,7 +24,7 @@
 <!-- ═══════════════════════════════════════════════
      SKIP TO MAIN (Accessibility)
 ═══════════════════════════════════════════════ -->
-<a href="#main-content" class="sr-only" style="position:absolute;top:var(--space-4);left:var(--space-4);z-index:9999;background:var(--accent-primary);color:#fff;padding:var(--space-2) var(--space-4);border-radius:var(--radius-md);font-weight:600;" tabindex="0">Loncat ke Konten Utama</a>
+<a href="#main-content" class="skip-link">Loncat ke Konten Utama</a>
 
 <!-- ═══════════════════════════════════════════════
      HEADER
@@ -210,7 +210,7 @@
             autocomplete="off"
             aria-label="Cari modul berdasarkan judul atau deskripsi"
           />
-          <button class="search-clear" id="search-clear" aria-label="Hapus pencarian" tabindex="-1">
+          <button class="search-clear" id="search-clear" aria-label="Hapus pencarian">
             <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
             </svg>
@@ -307,7 +307,7 @@
 <!-- ═══════════════════════════════════════════════
      RESET CONFIRM MODAL
 ═══════════════════════════════════════════════ -->
-<div class="modal-backdrop" id="reset-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc">
+<div class="modal-backdrop" id="reset-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-desc" aria-hidden="true">
   <div class="modal-box">
     <div class="modal-icon" aria-hidden="true">⚠️</div>
     <h2 class="modal-title" id="modal-title">Reset Semua Progress?</h2>

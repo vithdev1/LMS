@@ -239,6 +239,32 @@ ul, ol { list-style: none; }
   }
 }
 
+/* ── Skip Link (Accessibility) ────────────────────────────── */
+.skip-link {
+  position: absolute;
+  top: var(--space-3);
+  left: var(--space-3);
+  z-index: 9999;
+  background: var(--accent-primary);
+  color: #fff;
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-md);
+  font-weight: var(--font-semibold);
+  font-size: var(--text-sm);
+  text-decoration: none;
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-200%);
+  transition: transform var(--transition-normal);
+}
+
+.skip-link:focus,
+.skip-link:focus-visible {
+  transform: translateY(0);
+  color: #fff;
+  outline: 2px solid var(--accent-secondary);
+  outline-offset: 3px;
+}
+
 /* ── HEADER ──────────────────────────────────────────────── */
 .site-header {
   position: sticky;
@@ -1614,4 +1640,17 @@ ul, ol { list-style: none; }
   font-size: var(--text-xs);
   color: var(--text-muted);
   opacity: 0.5;
+}
+
+/* ── View Transitions API ────────────────────────────────── */
+@media (prefers-reduced-motion: no-preference) {
+  .module-card {
+    view-transition-name: none; /* default */
+  }
+
+  ::view-transition-old(root),
+  ::view-transition-new(root) {
+    animation-duration: 300ms;
+    animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  }
 }

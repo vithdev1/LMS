@@ -10,17 +10,158 @@
 'use strict';
 
 /* ── 1. MODULE DATA DEFINITIONS ─────────────────── */
+// const MODULES = [
+//   {
+//     id: 'mod-01',
+//     number: '01',
+//     title: 'Pengenalan HTML & Setup',
+//     desc: 'Apa itu HTML, Perbedaan HTML, CSS, dan JavaScript, Setup text editor, serta membuat dan menjalankan file HTML pertama.',
+//     category: 'HTML Dasar',
+//     difficulty: 'beginner',
+//     stage: 1,
+//     duration: 60,
+//     path: 'modules/01-pengenalan-html/index.html',
+//   },
+// ];
 const MODULES = [
+  // ── STAGE 1: Fondasi HTML ─────────────────────
   {
     id: 'mod-01',
     number: '01',
     title: 'Pengenalan HTML & Setup',
-    desc: 'Apa itu HTML, Perbedaan HTML, CSS, dan JavaScript, Setup text editor, serta membuat dan menjalankan file HTML pertama.',
+    desc: 'Apa itu HTML, perbedaan HTML/CSS/JS, setup text editor, dan membuat file HTML pertama Anda.',
     category: 'HTML Dasar',
     difficulty: 'beginner',
     stage: 1,
     duration: 60,
     path: 'modules/01-pengenalan-html/index.html',
+  },
+  {
+    id: 'mod-02',
+    number: '02',
+    title: 'Tag, Elemen & Atribut',
+    desc: 'Memahami struktur tag HTML, elemen void, atribut global, dan cara membaca dokumentasi MDN.',
+    category: 'HTML Dasar',
+    difficulty: 'beginner',
+    stage: 1,
+    duration: 75,
+    path: 'modules/02-tag-elemen-atribut/index.html',
+  },
+  {
+    id: 'mod-03',
+    number: '03',
+    title: 'HTML Semantik & Aksesibilitas',
+    desc: 'Menggunakan tag semantik (header, nav, main, article) dan atribut ARIA untuk web yang inklusif.',
+    category: 'HTML Dasar',
+    difficulty: 'intermediate',
+    stage: 1,
+    duration: 90,
+    path: 'modules/03-html-semantik/index.html',
+  },
+
+  // ── STAGE 2: CSS Styling ─────────────────────
+  {
+    id: 'mod-04',
+    number: '04',
+    title: 'Pengenalan CSS & Selectors',
+    desc: 'Cara kerja CSS, tiga cara menyisipkan style, selector dasar, dan spesifisitas.',
+    category: 'CSS Styling',
+    difficulty: 'beginner',
+    stage: 2,
+    duration: 80,
+    path: 'modules/04-pengenalan-css/index.html',
+  },
+  {
+    id: 'mod-05',
+    number: '05',
+    title: 'Warna, Tipografi & Box Model',
+    desc: 'Sistem warna CSS, font, line-height, padding, border, margin, dan box-sizing.',
+    category: 'CSS Styling',
+    difficulty: 'beginner',
+    stage: 2,
+    duration: 85,
+    path: 'modules/05-warna-tipografi/index.html',
+  },
+  {
+    id: 'mod-06',
+    number: '06',
+    title: 'Pseudo-class & Pseudo-element',
+    desc: 'Selector lanjutan: :hover, :focus, :nth-child, ::before, ::after, dan kombinasinya.',
+    category: 'CSS Styling',
+    difficulty: 'intermediate',
+    stage: 2,
+    duration: 100,
+    path: 'modules/06-pseudo-class/index.html',
+  },
+
+  // ── STAGE 3: CSS Layout ─────────────────────
+  {
+    id: 'mod-07',
+    number: '07',
+    title: 'Flexbox Fundamental',
+    desc: 'Display flex, main axis, cross axis, justify-content, align-items, dan flex items.',
+    category: 'CSS Layout',
+    difficulty: 'intermediate',
+    stage: 3,
+    duration: 110,
+    path: 'modules/07-flexbox/index.html',
+  },
+  {
+    id: 'mod-08',
+    number: '08',
+    title: 'CSS Grid Layout',
+    desc: 'Grid container, template areas, fr unit, auto-fit, minmax, dan nested grid.',
+    category: 'CSS Layout',
+    difficulty: 'intermediate',
+    stage: 3,
+    duration: 120,
+    path: 'modules/08-css-grid/index.html',
+  },
+  {
+    id: 'mod-09',
+    number: '09',
+    title: 'Responsive Design & Media Queries',
+    desc: 'Mobile-first, breakpoints, unit relative (rem, em, vw), clamp(), dan container queries.',
+    category: 'CSS Layout',
+    difficulty: 'challenge',
+    stage: 3,
+    duration: 130,
+    path: 'modules/09-responsive/index.html',
+  },
+
+  // ── STAGE 4: Projek Interaktif ─────────────────
+  {
+    id: 'mod-10',
+    number: '10',
+    title: 'DOM Manipulation Dasar',
+    desc: 'querySelector, event listener, classList, createElement, dan manipulasi atribut.',
+    category: 'Projek Interaktif',
+    difficulty: 'intermediate',
+    stage: 4,
+    duration: 120,
+    path: 'modules/10-dom-dasar/index.html',
+  },
+  {
+    id: 'mod-11',
+    number: '11',
+    title: 'LocalStorage & State Management',
+    desc: 'Menyimpan data di browser, JSON serialization, dan pola state management vanilla.',
+    category: 'Projek Interaktif',
+    difficulty: 'challenge',
+    stage: 4,
+    duration: 140,
+    path: 'modules/11-localstorage/index.html',
+  },
+  {
+    id: 'mod-12',
+    number: '12',
+    title: 'Projek Akhir: Todo App',
+    desc: 'Membangun aplikasi todo lengkap dengan CRUD, filter, dan persistensi localStorage.',
+    category: 'Projek Interaktif',
+    difficulty: 'challenge',
+    stage: 4,
+    duration: 180,
+    path: 'modules/12-todo-app/index.html',
   },
 ];
 
@@ -104,17 +245,6 @@ const Toast = {
 
   init() {
     this.container = document.getElementById('toast-container');
-
-    const pendingToast = sessionStorage.getItem('pendingToast');
-    if (pendingToast) {
-        try {
-            const data = JSON.parse(pendingToast);
-            this.show(data.type, data.title, data.msg);
-        } catch (e) {
-            console.warn('[VITH LMS] Gagal memuat pending toast:', e);
-        }
-        sessionStorage.removeItem('pendingToast');
-    }
   },
 
   show(type, title, msg, duration = 3000) {
@@ -143,15 +273,28 @@ const Toast = {
 
     this.container.appendChild(toast);
 
-    const timer = setTimeout(() => this._dismiss(toast), duration);
-    toast._timer = timer;
+    toast._timer = setTimeout(() => this._dismiss(toast), duration);
+
+    // Pause on hover (mouse)
+    const pause = () => {
+      clearTimeout(toast._timer);
+    };
+    const resume = () => {
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => this._dismiss(toast), duration);
+    };
+
+    toast.addEventListener('mouseenter', pause);
+    toast.addEventListener('mouseleave', resume);
+    toast.addEventListener('focusin', pause);
+    toast.addEventListener('focusout', resume);
 
     // Limit max toasts visible
     const toasts = this.container.querySelectorAll('.toast');
     if (toasts.length > 4) {
       this._dismiss(toasts[0]);
     }
-  },
+  }, 
 
   _dismiss(toast) {
     if (!toast || !toast.parentNode) return;
@@ -168,6 +311,7 @@ const Toast = {
     return div.innerHTML;
   },
 };
+
 
 /* ── 5. RENDER ENGINE ───────────────────────────── */
 const Renderer = {
@@ -244,19 +388,6 @@ const Renderer = {
     const bookmarkActive = isBookmark ? 'bookmarked' : '';
     const bookmarkAriaLabel = isBookmark ? 'Hapus dari favorit' : 'Tambahkan ke favorit';
 
-    // const dropdownItems = [
-    //   { value: 'not_started', label: 'Belum Dibuka',     dot: 'var(--text-muted)' },
-    //   { value: 'in_progress', label: 'Sedang Dipelajari', dot: 'var(--accent-primary)' },
-    //   { value: 'completed',   label: 'Selesai',           dot: 'var(--accent-secondary)' },
-    // ].map(opt => {
-    //   const isCurrent = status === opt.value ? 'current' : '';
-    //   return `<button class="dropdown-item ${isCurrent}" data-status="${opt.value}" role="menuitem">
-    //             <span class="dropdown-item-dot" style="background:${opt.dot}" aria-hidden="true"></span>
-    //             ${opt.label}
-    //             ${isCurrent ? '<span class="sr-only"> (status saat ini)</span>' : ''}
-    //           </button>`;
-    // }).join('');
-
     const li = document.createElement('article');
     li.className  = `module-card status-${status}`;
     li.dataset.id = module.id;
@@ -290,12 +421,12 @@ const Renderer = {
         </div>
       </div>
 
-      <div class="card-footer">
-        <span class="badge-status">${statusLabel}</span>
-        ${actionBtn}
-        <div class="status-dropdown-wrapper">
-        </div>
-      </div>
+<div class="card-footer">
+  <span class="badge-status" aria-label="Status modul: ${statusLabel}">
+    ${statusLabel}
+  </span>
+  ${actionBtn}
+</div>
     `;
 
     return li;
@@ -463,12 +594,27 @@ const UI = {
       }
     }
   },
-    updateResultsCount(filtered) {
-      const shown = document.getElementById('results-shown');
-      const total = document.getElementById('results-total');
-      if (shown) shown.textContent = filtered.length;
-      if (total) total.textContent = MODULES.length; // total modul keseluruhan
-    },
+updateResultsCount(filtered) {
+  const shown = document.getElementById('results-shown');
+  const total = document.getElementById('results-total');
+  if (shown) shown.textContent = filtered.length;
+  if (total) total.textContent = MODULES.length;
+  
+  // Announce ke screen reader (live region yang sudah ada di HTML)
+  const resultsInfo = document.querySelector('.results-info');
+  if (resultsInfo && filtered.length === 0) {
+    // Pesan khusus kalau tidak ada hasil
+    const countEl = document.getElementById('results-count');
+    if (countEl) {
+      countEl.innerHTML = `Tidak ada modul cocok dengan filter yang dipilih.`;
+    }
+  } else if (resultsInfo) {
+    const countEl = document.getElementById('results-count');
+    if (countEl) {
+      countEl.innerHTML = `Menampilkan <strong id="results-shown">${filtered.length}</strong> dari <strong id="results-total">${MODULES.length}</strong> modul`;
+    }
+  }
+},
     updateRoadmapTotals() {
       // Hitung total modul per stage
       const stages = [1, 2, 3, 4];
@@ -482,28 +628,77 @@ const UI = {
 
 /* ── 8. MAIN APP CONTROLLER ─────────────────────── */
 const App = {
-  activeDropdown: null,
 
   init() {
     State.load();
     Toast.init();
     Renderer.init();
+    this.bindStorageSync();
 
     this.bindEvents();
+    this.bindCardEvents();
     this.refresh();
     UI.updateCategoryCounts();
     UI.updateRoadmapTotals();
   },
 
   refresh() {
-    const filtered = Filter.apply();
-    Renderer.renderAll(filtered);
-    UI.updateProgress();
-    UI.updateRoadmap();
-    UI.updateResultsCount(filtered);
-    UI.updateCategoryCounts();
-    UI.updateRoadmapTotals();
-    this.bindCardEvents();
+    const runUpdate = () => {
+      const filtered = Filter.apply();
+      Renderer.renderAll(filtered);
+      UI.updateProgress();
+      UI.updateRoadmap();
+      UI.updateResultsCount(filtered);
+      UI.updateCategoryCounts();
+      UI.updateRoadmapTotals();
+    };
+
+    // Feature detection: pakai View Transitions kalau didukung
+    if (document.startViewTransition) {
+      document.startViewTransition(runUpdate);
+    } else {
+      runUpdate();
+    }
+  },
+
+  bindStorageSync() {
+    // 1. Sync dari tab lain via storage event
+    window.addEventListener('storage', e => {
+      if (e.key !== STORAGE_KEY_STATUS && e.key !== STORAGE_KEY_BOOKMARKS) return;
+
+      try {
+        if (e.key === STORAGE_KEY_STATUS && e.newValue) {
+          State.statuses = JSON.parse(e.newValue);
+        }
+        if (e.key === STORAGE_KEY_BOOKMARKS && e.newValue) {
+          State.bookmarks = JSON.parse(e.newValue);
+        }
+      } catch (err) {
+        console.warn('[VITH LMS] Storage sync error:', err);
+        return;
+      }
+
+      this.refresh();
+      Toast.show(
+        'info',
+        'Sinkronisasi Tab',
+        'Data belajar diperbarui dari tab lain.'
+      );
+    });
+
+    // 2. Sync saat tab kembali fokus (mis. dari halaman modul)
+    window.addEventListener('focus', () => {
+      const currentRaw = localStorage.getItem(STORAGE_KEY_STATUS);
+      const cachedRaw  = JSON.stringify(State.statuses);
+      if (currentRaw && currentRaw !== cachedRaw) {
+        try {
+          State.statuses = JSON.parse(currentRaw);
+          this.refresh();
+        } catch (e) {
+          /* skip silent */
+        }
+      }
+    });
   },
 
   bindEvents() {
@@ -555,18 +750,36 @@ const App = {
       this.refresh();
     });
 
-    // Close dropdowns on outside click
-    document.addEventListener('click', e => {
-      if (!e.target.closest('.status-dropdown-wrapper')) {
-        this.closeAllDropdowns();
+    // Keyboard shortcut: "/" untuk fokus ke search
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        this.closeModal();
+      }
+      this._trapFocus(e);
+      // Abaikan kalau ada modifier key
+      if (e.ctrlKey || e.metaKey || e.altKey) return;
+      
+      // Abaikan kalau user sedang mengetik di form field
+      const tag = document.activeElement?.tagName;
+      const isTyping = tag === 'INPUT' || tag === 'TEXTAREA' || tag === 'SELECT'
+                    || document.activeElement?.isContentEditable;
+      if (isTyping) return;
+      
+      if (e.key === '/') {
+        e.preventDefault();
+        searchInput.focus();
+        searchInput.select();
       }
     });
 
-    // Escape key: close dropdowns & modals
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') {
-        this.closeAllDropdowns();
-        this.closeModal();
+    // Escape di dalam search: bersihkan input
+    searchInput.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && e.target.value.length > 0) {
+        e.stopPropagation();
+        searchInput.value = '';
+        State.filter.query = '';
+        searchClear.classList.remove('visible');
+        this.refresh();
       }
     });
 
@@ -587,139 +800,80 @@ const App = {
     });
   },
 
-  bindCardEvents() {
-    const grid = document.getElementById('module-grid');
+bindCardEvents() {
+  const grid = document.getElementById('module-grid');
 
-    // Bookmark buttons (event delegation)
-    grid.addEventListener('click', e => {
-      // Bookmark toggle
-      const bmBtn = e.target.closest('.btn-bookmark');
-      if (bmBtn) {
-        e.stopPropagation();
-        const id        = bmBtn.dataset.moduleId;
-        const isNowBm   = State.toggleBookmark(id);
-        const module    = MODULES.find(m => m.id === id);
-        const modName   = module ? module.title : id;
+  // Hanya handle bookmark (event delegation)
+  grid.addEventListener('click', e => {
+    const bmBtn = e.target.closest('.btn-bookmark');
+    if (!bmBtn) return;
 
-        bmBtn.classList.toggle('bookmarked', isNowBm);
-        bmBtn.textContent = isNowBm ? '★' : '☆';
-        bmBtn.setAttribute('aria-pressed', isNowBm);
-        bmBtn.setAttribute('aria-label', isNowBm ? 'Hapus dari favorit' : 'Tambahkan ke favorit');
-        bmBtn.title = isNowBm ? 'Hapus dari favorit' : 'Tambahkan ke favorit';
+    e.stopPropagation();
+    const id        = bmBtn.dataset.moduleId;
+    const isNowBm   = State.toggleBookmark(id);
+    const module    = MODULES.find(m => m.id === id);
+    const modName   = module ? module.title : id;
 
-        UI.updateProgress();
-        UI.updateRoadmap();
+    bmBtn.classList.toggle('bookmarked', isNowBm);
+    bmBtn.textContent = isNowBm ? '★' : '☆';
+    bmBtn.setAttribute('aria-pressed', isNowBm);
+    bmBtn.setAttribute('aria-label', isNowBm ? 'Hapus dari favorit' : 'Tambahkan ke favorit');
+    bmBtn.title = isNowBm ? 'Hapus dari favorit' : 'Tambahkan ke favorit';
 
-        const countBm = document.getElementById('count-bookmark');
-        if (countBm) countBm.textContent = State.bookmarks.length;
+    UI.updateProgress();
+    UI.updateRoadmap();
 
-        // Update bookmark filter count tag
-        const statBm = document.getElementById('stat-bookmarks');
-        if (statBm) statBm.textContent = State.bookmarks.length;
+    const countBm = document.getElementById('count-bookmark');
+    if (countBm) countBm.textContent = State.bookmarks.length;
 
-        if (isNowBm) {
-          Toast.show('warning', 'Ditambahkan ke Favorit', `"${modName}" tersimpan di bookmark Anda.`);
-        } else {
-          Toast.show('info', 'Dihapus dari Favorit', `"${modName}" telah dihapus dari bookmark.`);
-        }
-        return;
-      }
+    const statBm = document.getElementById('stat-bookmarks');
+    if (statBm) statBm.textContent = State.bookmarks.length;
 
-      // Status dropdown toggle
-      // const toggleBtn = e.target.closest('.btn-status-toggle');
-      // if (toggleBtn) {
-      //   e.stopPropagation();
-      //   const wrapper  = toggleBtn.closest('.status-dropdown-wrapper');
-      //   const menu     = wrapper.querySelector('.status-dropdown-menu');
-      //   const isOpen   = menu.classList.contains('open');
+    if (isNowBm) {
+      Toast.show('warning', 'Ditambahkan ke Favorit', `"${modName}" tersimpan di bookmark Anda.`);
+    } else {
+      Toast.show('info', 'Dihapus dari Favorit', `"${modName}" telah dihapus dari bookmark.`);
+    }
+  });
+},
 
-      //   this.closeAllDropdowns();
 
-      //   if (!isOpen) {
-      //     menu.classList.add('open');
-      //     toggleBtn.setAttribute('aria-expanded', 'true');
-      //     this.activeDropdown = { menu, toggleBtn };
-      //   }
-      //   return;
-      // }
 
-      // Dropdown items
-      const dropItem = e.target.closest('.dropdown-item[data-status]');
-      if (dropItem) {
-        e.stopPropagation();
-        const newStatus = dropItem.dataset.status;
-        const card      = dropItem.closest('.module-card');
-        if (!card) return;
-        const id        = card.dataset.id;
-        const module    = MODULES.find(m => m.id === id);
-        const modName   = module ? module.title : id;
-        const oldStatus = State.getStatus(id);
+openModal() {
+  const modal = document.getElementById('reset-modal');
+  
+  // Simpan elemen yang fokus sebelum modal (untuk restore nanti)
+  this._previouslyFocused = document.activeElement;
+  
+  modal.classList.add('open');
+  modal.removeAttribute('aria-hidden');
+  document.body.style.overflow = 'hidden';
+  
+  // Set inert pada background agar tidak bisa di-tab
+  this._setBackgroundInert(true);
+  
+  setTimeout(() => {
+    document.getElementById('modal-cancel').focus();
+  }, 60);
+},
 
-        if (oldStatus === newStatus) {
-          this.closeAllDropdowns();
-          return;
-        }
-
-        State.setStatus(id, newStatus);
-        this.closeAllDropdowns();
-
-        // Re-render that card in place
-        // const newCard = Renderer.renderCard(module);
-        // card.replaceWith(newCard);
-        // this.bindCardEvents();   
-
-        // UI.updateProgress();
-        // UI.updateRoadmap();
-
-        const labels = {
-          not_started: 'Belum Dibuka',
-          in_progress:  'Sedang Dipelajari',
-          completed:    'Selesai',
-        };
-        const types = { not_started: 'info', in_progress: 'info', completed: 'success' };
-        // Toast.show(
-        //   types[newStatus],
-        //   'Status Diperbarui',
-        //   `"${modName}" → ${labels[newStatus]}.`
-        // );
-        sessionStorage.setItem('pendingToast', JSON.stringify({
-            type: types[newStatus],
-            title: 'Status Diperbarui',
-            msg: `"${modName}" → ${labels[newStatus]}.`
-        }));
-        window.location.reload();
-        return;
-      }
-    });
-  },
-
-  closeAllDropdowns() {
-    document.querySelectorAll('.status-dropdown-menu.open').forEach(menu => {
-      menu.classList.remove('open');
-      const toggle = menu.closest('.status-dropdown-wrapper')?.querySelector('.btn-status-toggle');
-      if (toggle) toggle.setAttribute('aria-expanded', 'false');
-    });
-    this.activeDropdown = null;
-  },
-
-  openModal() {
-    const modal = document.getElementById('reset-modal');
-    modal.classList.add('open');
-    modal.removeAttribute('aria-hidden');
-    document.body.style.overflow = 'hidden';
-    setTimeout(() => {
-      document.getElementById('modal-cancel').focus();
-    }, 60);
-  },
-
-  closeModal() {
-    const modal = document.getElementById('reset-modal');
-    modal.classList.remove('open');
-    modal.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
+closeModal() {
+  const modal = document.getElementById('reset-modal');
+  
+  if (!modal.classList.contains('open')) return;
+  
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+  
+  this._setBackgroundInert(false);
+  
+  if (this._previouslyFocused && document.contains(this._previouslyFocused)) {
+    this._previouslyFocused.focus();
+  } else {
     document.getElementById('btn-reset').focus();
-  },
-
+  }
+},
   confirmReset() {
     State.reset();
     // Reset UI filters
@@ -737,6 +891,41 @@ const App = {
     this.refresh();
     Toast.show('warning', 'Progress Direset', 'Semua data belajar telah dikembalikan ke awal.');
   },
+
+_setBackgroundInert(isInert) {
+  const targets = [
+    document.querySelector('.site-header'),
+    document.querySelector('.site-main'),
+    document.querySelector('.site-footer'),
+  ];
+  targets.forEach(el => {
+    if (!el) return;
+    if (isInert) el.setAttribute('inert', '');
+    else el.removeAttribute('inert');
+  });
+},
+
+_trapFocus(e) {
+  if (e.key !== 'Tab') return;
+  const modal = document.getElementById('reset-modal');
+  if (!modal.classList.contains('open')) return;
+  
+  const focusable = modal.querySelectorAll(
+    'button:not([disabled]), [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  if (focusable.length === 0) return;
+  
+  const first = focusable[0];
+  const last  = focusable[focusable.length - 1];
+  
+  if (e.shiftKey && document.activeElement === first) {
+    e.preventDefault();
+    last.focus();
+  } else if (!e.shiftKey && document.activeElement === last) {
+    e.preventDefault();
+    first.focus();
+  }
+},
 };
 
 /* ── 9. BOOTSTRAP ───────────────────────────────── */
