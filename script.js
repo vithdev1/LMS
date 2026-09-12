@@ -14,12 +14,12 @@ const MODULES = [
   {
     id: 'mod-01',
     number: '01',
-    title: 'Pengenalan HTML & Struktur Dokumen',
-    desc: 'Pelajari fondasi web: apa itu HTML, struktur dokumen, elemen dasar, dan cara browser membaca kode Anda.',
+    title: 'Pengenalan HTML & Setup',
+    desc: 'Apa itu HTML, Perbedaan HTML, CSS, dan JavaScript, Setup text editor, serta membuat dan menjalankan file HTML pertama.',
     category: 'HTML Dasar',
     difficulty: 'beginner',
     stage: 1,
-    duration: 45,
+    duration: 60,
     path: 'modules/01-pengenalan-html/index.html',
   },
 ];
